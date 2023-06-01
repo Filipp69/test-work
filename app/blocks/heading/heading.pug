@@ -1,0 +1,8 @@
+include ../breadcrumbs/breadcrumbs
+
+mixin heading(title)
+    .heading
+        .container
+            +breadcrumbs('Каталог товаров', 'Товар')
+            .title-page
+                h1.h1 #{title}

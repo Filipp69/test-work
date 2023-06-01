@@ -1,0 +1,15 @@
+.social {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  &__item {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+  }
+  &__icon {
+		transition: $transition;
+		fill: $color-black;
+  }
+}

@@ -1,0 +1,11 @@
+mixin accordion(items)
+    .div(data-accordions-group="")
+        each item in items
+            .accordion(data-accordion="")
+                .accordion__toggle(data-accordion-toggle="")
+                    .accordion__title
+                        span #{item[1]}
+                    .accordion__btn
+                .accordion__content(data-accordion-content="")
+                    .accordion__content-text
+                        p #{item[2]}

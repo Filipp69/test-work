@@ -1,0 +1,80 @@
+body *:not(svg):not(svg *):not(a):not(img):not(button):not(strong):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
+  all: unset;
+  display: revert;
+  list-style: none;
+  box-sizing: border-box;
+}
+body * {
+  outline: none;
+}
+main h1,
+main h2,
+main h3,
+main h4,
+main h5,
+main h6 {
+  margin: 0;
+  font-weight: normal;
+}
+a {
+  text-decoration: none;
+  color: unset;
+  transition: $transition;
+}
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0;
+}
+img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+}
+.hidden {
+  display: none!important;
+}
+body {
+  min-height: 100vh;
+  position: relative;
+  font-style: normal;
+  height: 100%;
+  width: 100vw;
+  overflow-x: hidden;
+}
+html {
+  height: auto;
+  -webkit-text-size-adjust: none;
+  &.disable-scrolling {
+    overflow-x: hidden;
+    margin-right: calc(-1 * (100vw - 100%));
+  }
+}
+html,
+body {
+  min-height: 100vh;
+  font-variant-ligatures: no-common-ligatures;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  position: relative;
+}
+.main,
+.page{
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 20px;
+  max-width: 1200px;
+}

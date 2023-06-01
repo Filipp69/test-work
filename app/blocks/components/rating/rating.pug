@@ -1,0 +1,14 @@
+mixin rating(type, checked)
+    - var count = 5;
+    .rating
+        while count > 0
+            if type === 'input'
+                input.rating__input(id=`review-stars-${count}` type="radio" name="rating" value=count checked=count === checked)
+                label.rating__item(for=`review-stars-${count}`)
+                    svg.rating__item-icon
+                        use(href="#icon-star")
+            if type === 'static'
+                .rating__item(class= count === checked ? 'checked' : '')
+                    svg.rating__item-icon
+                        use(href="#icon-star")
+            - count += -1;

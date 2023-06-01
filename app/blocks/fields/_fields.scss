@@ -1,0 +1,62 @@
+.inputholder {
+  width: 100%;
+  position: relative;
+  &__input {
+	width: 100%;
+	padding: 10px 20px;
+	border-radius: 7px;
+	border: 1px solid $color-black;
+	font-size: 16px;
+	&:focus {
+	  outline: none;
+	}
+	&::placeholder {
+	  color: $color-black;
+	  font-size: 16px;
+	}
+	&.error {
+	  border-color: $color-error;
+	  &::placeholder {
+		color: $color-error;
+	  }
+	}
+  }
+  &__textarea {
+	width: 100%;
+	min-height: 100px;
+	padding: 10px 20px;
+	border-radius: 7px;
+	border: 1px solid $color-black;
+	font-size: 16px;
+	display: block;
+	&:focus {
+	  outline: none;
+	}
+	&::placeholder {
+	  color: $color-black;
+	  font-size: 16px;
+	}
+	&.error {
+	  border-color: $color-error;
+	  &::placeholder {
+		color: $color-error;
+	  }
+	}
+  }
+}
+.error-text {
+  font-size: 12px;
+  line-height: 110%;
+  margin-top: 4px;
+  color: $color-error;
+  display: none;
+  &--backend {
+	display: block;
+  }
+}
+.error {
+  border-color: #da1b1b;
+  &+.error-text {
+	display: block;
+  }
+}
