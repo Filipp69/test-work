@@ -35,6 +35,12 @@ class formValidator {
           event.preventDefault();
           this.trigger(formSingle, 'validForm');
         }
+
+        this.isFieldValid(formSingle);
+         if(formSingle.classList.contains("invalid")){
+           event.preventDefault(); 
+           this.fakeButtonEvent(formSingle);
+         }
       });
 
       formSingle.addEventListener("change", (e) => {
@@ -43,6 +49,11 @@ class formValidator {
       });
 
       formSingle.addEventListener("keyup", (e) => {
+        this.changeFormFieldsEvent(formSingle, e.target);
+        this.trigger(formSingle, 'changeForm');
+      });
+
+      formSingle.addEventListener("input", (e) => {
         this.changeFormFieldsEvent(formSingle, e.target);
         this.trigger(formSingle, 'changeForm');
       });
@@ -68,7 +79,7 @@ class formValidator {
       }
 
       // очищаем кастомные селекты
-      let customSelect = formSingle.querySelectorAll('[data-select]');
+      let customSelect = formSingle.querySelectorAll('[data-custom-select]');
       customSelect.forEach(item=>{
         getSelected(item);
       });
