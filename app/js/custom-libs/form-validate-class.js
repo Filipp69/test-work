@@ -106,8 +106,15 @@ class formValidator {
   // скролл к ошибке
   errorScroll(formSingle) {
     let error = formSingle.querySelector('.error');
-    let offset = error.getBoundingClientRect().top + window.scrollY + this.scrollToError;
-    window.scroll(0, offset);
+    let parentModal = formSingle.closest('[data-modal]');
+    if(parentModal){
+      let inputholder = error.closest('.inputholder');
+      let offset = inputholder.getClientRects()[0].top + parentModal.scrollTop - inputholder.clientHeight - 30;
+      parentModal.scroll(0, offset);
+    } else {
+      let offset = error.getBoundingClientRect().top + window.scrollY - this.scrollToError;
+      window.scroll(0, offset);
+    }
   }
 
   // проверка формы на валидность
