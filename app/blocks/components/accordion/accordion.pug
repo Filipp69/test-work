@@ -1,18 +1,38 @@
-mixin accordion(items)
-    .div(data-accordions-group="")
-        each item in items
-            .accordion(data-accordion="")
-                .accordion__toggle(data-accordion-toggle="")
-                    .accordion__title
-                        span=item.title
-                    .accordion__btn
-                .accordion__content(data-accordion-content="")
-                    .accordion__content-text
-                        p=item.text
+mixin accordion(data)
+    .accordion(data-accordion)
+        .accordion__toggle(data-accordion-toggle)
+            .accordion__title
+                span=data.title
+            .accordion__btn
+        .accordion__content(data-accordion-content)
+            .accordion__content-box
+                if data.text
+                    p=data.text
+                else
+                    block
 
 //- Пример использования
 
-//- +accordion([
-//-     {title: "Заголовок 1", text: "Текст 1"},
-//-     {title: "Заголовок 2", text: "Текст 2"},
-//- ])
+//- +accordion({
+//-     title: "Заголовок 1",
+//-     text: "Текст 1"
+//- })
+
+//- +accordion({
+//-     title: "Заголовок 2",
+//- })
+//-     p Lorem ipsum dolor sit amet
+//-     p Lorem ipsum
+//-     a(href="#") Lorem ipsum dolor sit
+
+//- Если необходимо, чтобы при открытии одного аккордиона из группы закрывался другой
+
+//- div(data-accordions-group)
+//-     +accordion({
+//-         title: "Заголовок 1",
+//-         text: "Текст 1"
+//-     })
+//-     +accordion({
+//-         title: "Заголовок 2",
+//-         text: "Текст 2"
+//-     })
