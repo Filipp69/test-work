@@ -18,9 +18,12 @@
   }
 }
 
-@mixin size($width, $height) {
+@mixin size($width, $height: $width) {
   width: #{$width};
-  height: #{$height};
+
+  @if $height {
+    height: #{$height};
+  }
 }
 
 @mixin adaptive-holder($width, $height, $position: relative) {
