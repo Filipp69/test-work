@@ -2,7 +2,9 @@ extends ../../template/template.pug
 include ../../blocks/heading/heading
 
 block mainwrapper
-    +heading('Список страниц')
+    +heading({
+      breadcrumbs: ["Список страниц"],
+    })
     .page
         - var pagesJson = [['Главная', 'index.html'],['Список страниц', 'pages.html']]
         mixin page(pages)

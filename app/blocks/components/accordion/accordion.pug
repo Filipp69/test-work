@@ -4,8 +4,15 @@ mixin accordion(items)
             .accordion(data-accordion="")
                 .accordion__toggle(data-accordion-toggle="")
                     .accordion__title
-                        span #{item[1]}
+                        span=item.title
                     .accordion__btn
                 .accordion__content(data-accordion-content="")
                     .accordion__content-text
-                        p #{item[2]}
+                        p=item.text
+
+//- Пример использования
+
+//- +accordion([
+//-     {title: "Заголовок 1", text: "Текст 1"},
+//-     {title: "Заголовок 2", text: "Текст 2"},
+//- ])

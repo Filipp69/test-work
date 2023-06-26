@@ -140,7 +140,7 @@ class formValidator {
         );
         let formPass = formSingle.querySelectorAll('[type="password"]:not([data-no-validate])');
         let noValidate = formSingle.querySelectorAll('[data-no-validate]');
-        let formGroup = formSingle.querySelectorAll('[data-form-group]');
+        let formGroup = formSingle.querySelectorAll('[data-form-group]:not([data-no-validate])');
         // проверяем все поля по нужным условиям
         if (this.inputFileClass && this.inputFileClass.parentAttr) {
             let formFiles = formSingle.querySelectorAll(`.${this.inputFileClass.classInsert}`);
