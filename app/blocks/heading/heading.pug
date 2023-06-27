@@ -4,7 +4,7 @@ mixin heading(data)
     div(class=`${data.class ? `heading ${data.class}` : "heading"}`)
         .container
             .heading__row(style=`${data.bg ? `background-image: url(img/image-content/${data.bg});` : ""}`)
-                +breadcrumbs(`${data.breadcrumbs}`)
+                +breadcrumbs(data.breadcrumbs)
                 .title-page
                     if data.title
                         h1.h1 #{data.title}
@@ -22,6 +22,7 @@ mixin heading(data)
 
 //- +heading({
 //-     breadcrumbs: ["Каталог"],
+//-     title: "Страница каталога",
 //-     text: "Рыбатекст поможет дизайнеру сгенерировать несколько абзацев",
 //-     class: "heading--small-banner",
 //-     bg: "heading-small-pic.jpg"

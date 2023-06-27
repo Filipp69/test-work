@@ -1,7 +1,4 @@
-mixin breadcrumbs(links)
-    -
-      var arr = links.split(",")
-
+mixin breadcrumbs(arr)
     .breadcrumbs
         span.breadcrumbs__item
             a(href="/")
@@ -14,3 +11,9 @@ mixin breadcrumbs(links)
             else
                 span.breadcrumbs__item
                     span= link
+
+//- Примеры использования
+
+//- +breadcrumbs(["Тест 1"])
+
+//- +breadcrumbs(["Тест 1", "Тест 2", "Тест 3, 4"])
