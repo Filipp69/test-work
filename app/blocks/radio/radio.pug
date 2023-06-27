@@ -1,5 +1,5 @@
 mixin radio(data)
-    span.radio(class=data.class)
+    .radio(class=data.class)
         input.radio__input(type='radio' id=data.id name=data.name checked=data.checked)&attributes(attributes)
         label.radio__title(for=data.id)=data.title
 
