@@ -48,6 +48,7 @@ let commonJsLibs = [
     // 'app/js/custom-libs/tabs.js',
     // 'app/js/custom-libs/input-file-class.js',
     // 'app/js/custom-libs/simple-map.js',
+    // 'app/js/custom-libs/cookie-class.js',
 ]
 function clean() {
     return del('dist');

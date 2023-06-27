@@ -1,7 +1,8 @@
 .counter {
   display: flex;
+  width: fit-content;
   border-radius: 4px;
-  background-color: $color-grey;
+  background-color: lightgrey;
   .input {
 	width: 30px;
 	flex: 0 0 30px;

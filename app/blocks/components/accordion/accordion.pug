@@ -1,5 +1,5 @@
 mixin accordion(data)
-    .accordion(data-accordion)
+    .accordion(data-accordion)&attributes(attributes)
         .accordion__toggle(data-accordion-toggle)
             .accordion__title
                 span=data.title
@@ -35,4 +35,4 @@ mixin accordion(data)
 //-     +accordion({
 //-         title: "Заголовок 2",
 //-         text: "Текст 2"
-//-     })
+//-     })(class="faq__item")

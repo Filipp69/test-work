@@ -4,7 +4,6 @@ include ../nav/nav.pug
 header.header
     .container
         .header__row
-            +logo
+            //- +logo("logo.svg")(class="header__logo")
             .burger
-            +nav
-            //span.button(data-modal-open="modal") Поп ап с формой
+            //- +nav(["О нас", "Доставка", "Контакты"])(class="header__nav")
