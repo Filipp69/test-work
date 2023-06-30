@@ -17,6 +17,7 @@
 * ко всем компонентам с предполагаемой высотой 100vh необходимо добавить `mixin adaptive-height` для более гибкого расчета
 * если компонент `rating` не используется, необходимо удалить иконку `app/icons/single/star.svg`
 * если компонент `tooltip` не используется, необходимо удалить иконку `app/icons/single/tooltip.svg`
+* для sticky элемента используем свойство position: sticky. Если секции необходим overflow: hidden - используем класс section--no-overflow
 * все элементы с `position: fixed` нужно оборачивать в контейнер с `width: 100vw`, чтобы при `overflow: hidden` элементы не дергались
 * класс `Modal` в файле `js/custom-libs/modal.js` :
   + валидация находится в конструкторе
