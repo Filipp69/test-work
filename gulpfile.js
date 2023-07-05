@@ -15,6 +15,8 @@ const imagemin = require("gulp-imagemin");
 const imageminJpg = require("imagemin-jpeg-recompress");
 const imageminPng = require("imagemin-pngquant");
 const changed = require("gulp-changed");
+const cached = require("gulp-cached");
+const remember = require("gulp-remember");
 
 let jsLibs = [
     'node_modules/swiper/swiper-bundle.min.js',
@@ -80,7 +82,8 @@ function style() {
     );
 }
 function html() {
-    return gulp.src('app/pages/**/*.pug')
+    return gulp.src('app/pages/**/*.pug', { since: gulp.lastRun(html) })
+        .pipe(cached("html"))
         .pipe(pug({
             pretty: true,
             basedir: "app",
@@ -101,6 +104,7 @@ function html() {
         .pipe(rename({
             dirname: ""
         }))
+        .pipe(remember("html"))
         .pipe(gulp.dest('dist/'))
         .on('end', browserSync.reload);
     // .pipe(browserSync.stream())
