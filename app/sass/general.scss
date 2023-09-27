@@ -1,11 +1,23 @@
-body *:not(svg):not(svg *):not(a):not(img):not(button):not(strong):not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
-  all: unset;
-  display: revert;
+body
+  *:not(svg):not(svg *):not(a):not(img):not(button):not(strong):not(h1):not(
+    h2
+  ):not(h3):not(h4):not(h5):not(h6) {
   list-style: none;
   box-sizing: border-box;
 }
 body * {
   outline: none;
+}
+header,
+main,
+footer,
+.modal {
+  *:not(svg):not(svg *):not(a):not(img):not(button):not(strong):not(h1):not(
+      h2
+    ):not(h3):not(h4):not(h5):not(h6) {
+    all: unset;
+    display: revert;
+  }
 }
 main h1,
 main h2,
@@ -35,7 +47,7 @@ img {
   max-width: 100%;
 }
 .hidden {
-  display: none!important;
+  display: none !important;
 }
 body {
   min-height: 100vh;
@@ -65,7 +77,7 @@ body {
   position: relative;
 }
 .main,
-.page{
+.page {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
