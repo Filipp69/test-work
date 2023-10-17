@@ -1,9 +1,31 @@
 function enableScrolling() {
-    document.body.style = '';
-    document.querySelector('html').classList.remove('disable-scrolling');
-}
-function disableScrolling() {
-    const scrollWidth = window.innerWidth - document.documentElement.clientWidth;
-    document.body.style = `padding-right: ${scrollWidth}px`;
-    document.querySelector('html').classList.add('disable-scrolling');
-}
+    let html = document.querySelector("html");
+    let lockedEls = document.querySelectorAll("[data-lock-scroll]");
+
+    if (html.classList.contains("disable-scrolling")) {
+      setTimeout(function () {
+        html.classList.remove("disable-scrolling");
+        lockedEls.forEach(function (item) {
+          item.style.paddingRight = "";
+        });
+      }, 300);
+      setTimeout(function () {
+        lockedEls.forEach(function (item) {
+          item.style.transition = "";
+        });
+      }, 400);
+    }
+  }
+  function disableScrolling() {
+    let html = document.querySelector("html");
+    let lockedEls = document.querySelectorAll("[data-lock-scroll]");
+    let scrollWidth = window.innerWidth - document.body.clientWidth;
+
+    if (!html.classList.contains("disable-scrolling")) {
+      lockedEls.forEach(function (item) {
+        item.style.paddingRight = `${scrollWidth}px`;
+        item.style.transition = "0s";
+      });
+      html.classList.add("disable-scrolling");
+    }
+  }

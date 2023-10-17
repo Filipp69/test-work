@@ -50,7 +50,7 @@ html {
   height: auto;
   -webkit-text-size-adjust: none;
   &.disable-scrolling {
-    overflow-x: hidden;
+    overflow: hidden;
     margin-right: calc(-1 * (100vw - 100%));
   }
 }
