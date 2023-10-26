@@ -1,13 +1,14 @@
 class formValidator {
     constructor(parentForm, options) {
         this.parentForm = document.querySelectorAll(parentForm);
-        this.options = options;
-        this.inputFileClass = this.options.fileUploadData;
-        this.customError = this.options.customErrorMessageData;
-        this.maskLength = this.options.maskLength ? this.options.maskLength : 18;
-        this.passwordLength = this.options.passwordLength ? this.options.passwordLength : 5;
+        this.needErrorMessage = options.needErrorMessage || false;
+        this.inputFileClass = options.fileUploadData;
+        this.customError = options.customErrorMessageData;
+        this.maskLength = options.maskLength ? options.maskLength : 18;
+        this.passwordLength = options.passwordLength ? options.passwordLength : 5;
         this.customEvents = options.on;
         this.scrollToError = options.scrollToError;
+        this.defaultErrorMessage = options.defaultErrorMessage ? options.defaultErrorMessage : ''
         this.init();
     }
 
@@ -138,12 +139,12 @@ class formValidator {
         let formCheckInputs = formSingle.querySelectorAll(
             '[data-check-select]:not([data-no-validate])'
         );
-        let formPass = formSingle.querySelectorAll('[type="password"]:not([data-no-validate])');
+        let formPass = formSingle.querySelectorAll('[data-password]:not([data-no-validate])');
         let noValidate = formSingle.querySelectorAll('[data-no-validate]');
         let formGroup = formSingle.querySelectorAll('[data-form-group]:not([data-no-validate])');
         // проверяем все поля по нужным условиям
         if (this.inputFileClass && this.inputFileClass.parentAttr) {
-            let formFiles = formSingle.querySelectorAll(`.${this.inputFileClass.classInsert}`);
+            let formFiles = formSingle.querySelectorAll(`.${this.inputFileClass.parentClass}`);
             this._validateInputFiles(formFiles);
         }
 
@@ -210,7 +211,7 @@ class formValidator {
                     backError.textContent = '';
                 }
                 if (this.inputFileClass && this.inputFileClass.parentAttr) {
-                    let inputFileHolder = field.closest(`.${this.inputFileClass.classInsert}`);
+                    let inputFileHolder = field.closest(`.${this.inputFileClass.parentClass}`);
                     if (inputFileHolder) {
                         inputFileHolder.classList.remove('error');
                     }
@@ -227,7 +228,7 @@ class formValidator {
             if (field.hasAttribute(`data-fileupload-delete`)) {
                 this.isFieldValid(formSingle);
                 formSingle
-                    .querySelector(`.${this.inputFileClass.classInsert}`)
+                    .querySelector(`.${this.inputFileClass.parentClass}`)
                     .classList.remove('error');
             }
         }
@@ -239,7 +240,7 @@ class formValidator {
         field.classList.add('error');
 
         // если нужно отображать текстовые ошибки
-        if (this.options.needErrorMessage) {
+        if (this.needErrorMessage) {
             let textMessageType = field.getAttribute('data-text-error');
             let textMessage;
             let errorTip;
@@ -248,7 +249,7 @@ class formValidator {
             if (textMessageType && this.customError && this.customError[textMessageType]) {
                 textMessage = this.customError[textMessageType];
             } else {
-                textMessage = this.options.defaultErrorMessage;
+                textMessage = this.defaultErrorMessage;
             }
 
             // если уже есть текст ошибки, то перезатираем его
@@ -315,7 +316,7 @@ class formValidator {
             field.forEach((singleField) => {
                 let fileItems = singleField.querySelectorAll(`[data-fileupload-input]`);
 
-                if (fileItems.length < this.inputFileClass.options.minFiles) {
+                if (fileItems.length < this.inputFileClass.minFiles) {
                     this._addFieidInvalidClass(singleField);
                 } else {
                     this._removeFieidInvalidClass(singleField);
@@ -424,7 +425,7 @@ class formValidator {
             this._validateDefaultSelect(singleField);
         } else if (singleField.hasAttribute('data-length')) {
             this._validateExactLength(singleField);
-        } else if (singleField.type === 'password') {
+        } else if (singleField.hasAttribute('data-password')) {
             this._validatePassword(singleField);
         } else {
             this._removeFieidInvalidClass(singleField);

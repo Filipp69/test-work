@@ -1,18 +1,17 @@
-;
-(function () {
-    let passwordBtns = document.querySelectorAll('[data-pass-icon]');
-    passwordBtns.forEach((passwordBtn) => {
-        passwordBtn.addEventListener('click', togglePassword)
-    })
+document.addEventListener("DOMContentLoaded", function () {
+  const passwordBtns = document.querySelectorAll("[data-pass-toggle-icon]");
+  passwordBtns.forEach((passwordBtn) => {
+    passwordBtn.addEventListener("click", () => togglePassword(passwordBtn));
+  });
+});
 
-})()
-
-function togglePassword() {
-    let inputItem = this.closest('[data-pass-item]').querySelector('[data-pass-input]');
-    this.classList.toggle('password-toggle-icon--hide');
-    if (this.classList.contains('password-toggle-icon--hide')) {
-        inputItem.setAttribute('type', 'text');
-    } else {
-        inputItem.setAttribute('type', 'password');
-    }
+function togglePassword(button) {
+  const inputParent = button.closest("[data-pass-toggle]");
+  const input = inputParent.querySelector("[data-pass-toggle-input]");
+  button.classList.toggle("password-toggle-icon--hide");
+  if (button.classList.contains("password-toggle-icon--hide")) {
+    input.type = "text";
+  } else {
+    input.type = "password";
+  }
 }

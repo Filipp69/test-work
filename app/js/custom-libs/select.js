@@ -1,88 +1,82 @@
-document.addEventListener('DOMContentLoaded', function () {
-    let customSelects = document.querySelectorAll('[data-select]');
-    customSelects.forEach(select => {
-        let button = select.querySelector('[data-select-btn]');
-        let selectInputs = select.querySelectorAll('[data-select-input]');
+class Select {
+    constructor(parent) {
+        this.parent = parent;
+        this.button = this.parent.querySelector('[data-select-btn]');
+        this.list = this.parent.querySelector('[data-select-list]');
+        this.inputs = this.list.querySelectorAll('[data-select-input]');
+        this.placeInsert = this.parent.querySelector('[data-select-changing]');
+        this.isDefaultText = this.button.hasAttribute('data-select-default');
+        this.isClosing = this.parent.hasAttribute('data-close-on-select');
+        this.choosenArray = [];
+        this.insertText = ''; 
+        this.optionText = null;
+        this.init();
+    }
 
-        getSelected(select);
-
-        button.addEventListener('click', () => showSelectList(button));
-        document.addEventListener('mouseup', (e) => hideOpenSelect(e, button));
-
-        selectInputs.forEach(input => {
-            input.addEventListener('change', () => getSelected(select));
+    init() {
+        this.getSelected();
+        this.button.addEventListener('click', () => this.showSelectList());
+        document.addEventListener('mouseup', (e) => this.hideOpenSelect(e));
+        this.inputs.forEach(input => {
+            input.addEventListener('change', () => this.getSelected());
         });
-    });
-});
-// select toggle
-function showSelectList(button) {
-    let optionList = button.closest('[data-select]').querySelector('[data-select-list]');
-    if (button.classList.contains('open')) {
-        closeSelect(button, optionList);
-    } else {
-        openSelect(button, optionList);
     }
-}
-// select return active items
-function getSelected(select) {
-    let optionList = select.querySelector('[data-select-list]');
-    let optionItems = optionList.querySelectorAll('[data-select-input]');
-    let isDefaultText = select.querySelector('[data-select-default]');
-    let button = select.querySelector('[data-select-btn]');
-    let isClosing = select.getAttribute('data-close-on-select');
-    let placeInsert = select.querySelector('[data-select-changing]');
-    let choosenArray = [];
-    let insertText = '';
-    let optionText;
-    optionItems.forEach(option => {
-        optionText = option.closest('[data-select-option]');
-        if (option.checked) {
-            optionText.classList.add('active');
-            choosenArray.push(optionText.textContent.trim());
+
+    getSelected() {
+        this.choosenArray = [];
+        this.inputs.forEach(option => {
+            this.optionText = option.closest('[data-select-option]');
+            if (option.checked) {
+                this.optionText.classList.add('active');
+                this.choosenArray.push(this.optionText.textContent.trim());
+            } else {
+                this.optionText.classList.remove('active');
+            }
+        });
+    
+        if (this.choosenArray.length) {
+            this.insertText = this.choosenArray.join('; ');
+        } else if (this.isDefaultText) {
+            this.insertText = this.button.getAttribute('data-select-default');
+        }
+    
+        this.placeInsert.textContent = this.insertText;
+    
+        if (this.isClosing) {
+            this.toggleSelect('remove');
+        }
+    }
+
+    showSelectList() {
+        if (this.button.classList.contains('open')) {
+            this.toggleSelect('remove');
         } else {
-            optionText.classList.remove('active');
-        }
-    });
-
-    if (choosenArray.length) {
-        insertText = choosenArray.join('; ');
-    } else {
-        if (isDefaultText) {
-            insertText = isDefaultText.getAttribute('data-select-default');
+            this.toggleSelect('add');
         }
     }
 
-    placeInsert.textContent = insertText;
-
-    if (JSON.parse(isClosing)) {
-        closeSelect(button, optionList);
-    }
-}
-// select close on click around
-function hideOpenSelect(e, button) {
-    if (button.classList.contains('open')) {
-        let select = button.closest('[data-select]');
-        let optionList = select.querySelector('[data-select-list]');
-        let isSelect = e.target == select || select.contains(e.target);
-        if (!isSelect) {
-            closeSelect(button, optionList);
+    hideOpenSelect(e) {
+        if (this.button.classList.contains('open')) {
+            const isSelect = e.target == this.parent || this.parent.contains(e.target);
+            if (!isSelect) {
+                this.toggleSelect('remove');
+            }
         }
     }
-}
-// select close
-function closeSelect(button, optionList) {
-    button.classList.remove('open');
-    fadeOut({
-        el: optionList,
-        timeout: 500
-    });
-}
-// select open
-function openSelect(button, optionList) {
-    button.classList.add('open');
-    fadeIn({
-        el: optionList,
-        timeout: 500
-    });
-}
 
+    toggleSelect(status) {
+        this.button.classList[status]('open');
+        if (status === "add") {
+            fadeIn({
+                el: this.list,
+                timeout: 500
+            });
+        } else {
+            fadeOut({
+                el: this.list,
+                timeout: 500
+            });
+        }
+
+    }
+}

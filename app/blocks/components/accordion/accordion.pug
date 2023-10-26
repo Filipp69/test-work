@@ -1,5 +1,5 @@
 mixin accordion(data)
-    .accordion(data-accordion)&attributes(attributes)
+    .accordion(data-accordion=`${data.type ? data.type : ''}`)&attributes(attributes)
         .accordion__toggle(data-accordion-toggle)
             .accordion__title
                 span=data.title
@@ -15,7 +15,7 @@ mixin accordion(data)
 
 //- +accordion({
 //-     title: "Заголовок 1",
-//-     text: "Текст 1"
+//-     text: "Текст 1",
 //- })
 
 //- +accordion({
@@ -26,7 +26,6 @@ mixin accordion(data)
 //-     a(href="#") Lorem ipsum dolor sit
 
 //- Если необходимо, чтобы при открытии одного аккордиона из группы закрывался другой
-
 //- div(data-accordions-group)
 //-     +accordion({
 //-         title: "Заголовок 1",
@@ -35,4 +34,16 @@ mixin accordion(data)
 //-     +accordion({
 //-         title: "Заголовок 2",
 //-         text: "Текст 2"
+//-     })(class="faq__item")
+
+//- Если необходим только мобильный или только декстопный аккордеон
+//-     +accordion({
+//-         title: "Заголовок 1",
+//-         text: "Текст 1",
+//-         type: "mobile"
+//-     })
+//-     +accordion({
+//-         title: "Заголовок 2",
+//-         text: "Текст 2"
+//-         type: "desctop"
 //-     })(class="faq__item")

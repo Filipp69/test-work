@@ -1,43 +1,47 @@
 class Cookie {
-    constructor(parent, options) {
-        this.parent = parent;
-        this.cookieName = options.cookieName;
-        this.cookiePeriod = +options.cookiePeriod;
-        this.cookiePath = options.cookiePath || '/';
-        this.cookieValue = options.cookieValue || 'true';
-        this.init();
-    }
+  constructor(parent, options) {
+    this.parent = parent;
+    this.name = options.name;
+    this.period = +options.period;
+    this.path = options.path || "/";
+    this.value = options.value || "true";
+    this.checkCookie();
+    this.addButtonEvent();
+  }
 
-    init() {
-        this.checkCookie();
-        let cookieBtns = this.parent.querySelectorAll(`[data-cookie-agree]`);
-        cookieBtns.forEach(cookieBtn => {
-            cookieBtn.addEventListener('click', () => this.cookieWork());
-        });
-    }
+  addButtonEvent() {
+    const agreeBtns = this.parent.querySelectorAll(`[data-cookie-agree]`);
+    agreeBtns.forEach((agreeBtn) => {
+      agreeBtn.addEventListener("click", () => this.setCookie());
+    });
+  }
 
-    cookieWork() {
-        let date = new Date();
-        date.setDate(date.getDate() + this.cookiePeriod);
-        document.cookie = `${this.cookieName}=${this.cookieValue}; path=${this.cookiePath}; expires=${date}`;
-        this.parent.style.display = 'none';
-    }
+  setCookie() {
+    const date = new Date();
+    date.setDate(date.getDate() + this.period);
+    document.cookie = `${this.name}=${this.value}; path=${this.path}; expires=${date}`;
+    this.parent.style.display = "none";
+  }
 
-    checkCookie() {
-        let showCookie = this.getCookieName(this.cookieName);
-        if (showCookie != this.cookieValue) {
-            if (this.parent) {
-                this.parent.style.display = 'block';
-            }
-        }
+  checkCookie() {
+    const showCookie = this.getCookieByName(this.name);
+    if (showCookie != this.value && this.parent) {
+      this.parent.style.display = "block";
     }
+  }
 
-    getCookieName(name) {
-        let matches = document.cookie.match(
-            new RegExp(
-                '(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'
-            )
-        );
-        return matches ? decodeURIComponent(matches[1]) : undefined;
-    }
+  deleteCookie() {
+    document.cookie = `${this.name}=${this.value}; path=${this.path}; expires=Thu, 01 Jan 1970 00:00:01 GMT`;
+  }
+
+  getCookieByName(name) {
+    const matches = document.cookie.match(
+      new RegExp(
+        "(?:^|; )" +
+          name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") +
+          "=([^;]*)"
+      )
+    );
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+  }
 }

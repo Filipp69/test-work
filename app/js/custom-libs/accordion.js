@@ -1,55 +1,64 @@
-document.addEventListener('DOMContentLoaded', function () {
-    let accordions = document.querySelectorAll('[data-accordion]');
-    if(accordions) {
-        accordions.forEach(accordion => {
-            let accordionToggle = accordion.querySelector('[data-accordion-toggle]');
-            accordionToggle.addEventListener('click', () => {
-                let isMobile = accordion.getAttribute('data-accordion') === 'mobile';
-                if (isMobile) {
-                    let windowWidth = +accordion.getAttribute('data-accordion-set') || 991;
-                    if (window.innerWidth <= windowWidth) {
-                        toggleAccordionItem(accordionToggle);
-                    }
-                } else {
-                    toggleAccordionItem(accordionToggle);
-                }
-            });
-        })
-    }
-});
+class Accordion {
+  constructor(parent, options) {
+    this.accordion = parent;
+    this.button = this.accordion.querySelector("[data-accordion-toggle]");
+    this.content = this.accordion.querySelector("[data-accordion-content]");
+    this.group = this.accordion.closest("[data-accordions-group]");
+    this.isMobile = this.accordion.getAttribute("data-accordion") === "mobile";
+    this.setOn = options.setOn || 991;
+    this.isDesctop =
+      this.accordion.getAttribute("data-accordion") === "desctop";
+    this.unsetOn = options.unsetOn || 991;
+    this.init();
+  }
 
-function toggleAccordionItem(accordionToggle) {
-    let accordionItem = accordionToggle.closest('[data-accordion]');
-    let accordionContent = accordionItem.querySelector('[data-accordion-content]');
-    let accordionGroup = accordionToggle.closest('[data-accordions-group]');
-
-    if (accordionGroup) {
-        let prevItem = accordionGroup.querySelector('[data-accordion-toggle].active');
-        if (prevItem && !accordionToggle.classList.contains('active')) {
-            let prevAccordionItem = prevItem.closest('[data-accordion]');
-            let prevAccordionContent = prevAccordionItem.querySelector('[data-accordion-content]');
-            toggleAccordion(prevItem, prevAccordionContent, 'remove');
+  init() {
+    this.button.addEventListener("click", () => {
+      if (this.isMobile) {
+        if (window.innerWidth <= this.setOn) {
+          this.toggleItem();
         }
-    }
+      } else if (this.isDesctop) {
+        if (window.innerWidth > this.unsetOn) {
+          this.toggleItem();
+        }
+      } else {
+        this.toggleItem();
+      }
+    });
+  }
 
-    if (accordionToggle.classList.contains('active')) {
-        toggleAccordion(accordionToggle, accordionContent, 'remove');
+  toggleItem() {
+    this.toggleGroup();
+    if (this.accordion.classList.contains("active")) {
+      this.toggle(this.accordion, this.content, "remove");
     } else {
-        toggleAccordion(accordionToggle, accordionContent, 'add');
+      this.toggle(this.accordion, this.content, "add");
     }
-}
+  }
 
-function toggleAccordion(itemToggle, content, status) {
-    itemToggle.classList[status]('active');
-    if(status === 'add') {
-        slideDown({
-            el: content,
-            timeout: 300
-        });
-    } else {
-        slideUp({
-            el: content,
-            timeout: 300
-        });
+  toggleGroup() {
+    if (this.group) {
+      const prev = this.group.querySelector(".active");
+      if (prev && !this.accordion.classList.contains("active")) {
+        const content = prev.querySelector("[data-accordion-content]");
+        this.toggle(prev, content, "remove");
+      }
     }
+  }
+
+  toggle(button, content, status) {
+    button.classList[status]("active");
+    if (status === "add") {
+      slideDown({
+        el: content,
+        timeout: 300,
+      });
+    } else {
+      slideUp({
+        el: content,
+        timeout: 300,
+      });
+    }
+  }
 }

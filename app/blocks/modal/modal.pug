@@ -1,10 +1,10 @@
 .overlay(data-overlay="")
 
-.modal(data-modal="modal" data-form-wrapper="modal" data-form="modal")
+.modal(data-modal="modal")
     .modal__close(data-modal-close="")
     .modal__title
         span Поп ап с формой
-    .modal__container(data-scroll-container="")
+    .modal__container(data-scroll-container="" data-form="")
         form.form.invalid(data-validate-modal="" data-form-body="")
             .inputholder.form__inputholder
                 input.inputholder__input(type="text" placeholder="Ваше имя*" data-required="")
