@@ -84,9 +84,3 @@ body {
     overflow: hidden;
   }
 }
-.test-image {
-  transition: $transition;
-  @include hover {
-    background-color: red;
-  }
-}
