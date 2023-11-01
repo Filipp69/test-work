@@ -1,23 +1,19 @@
-body
-  *:not(svg):not(svg *):not(a):not(img):not(button):not(strong):not(h1):not(
-    h2
-  ):not(h3):not(h4):not(h5):not(h6) {
-  list-style: none;
-  box-sizing: border-box;
-}
-body * {
-  outline: none;
-}
-header,
-main,
-footer,
-.modal {
-  *:not(svg):not(svg *):not(a):not(img):not(button):not(strong):not(h1):not(
-      h2
-    ):not(h3):not(h4):not(h5):not(h6) {
-    all: unset;
-    display: revert;
+@layer reset {
+  header,
+  main,
+  footer,
+  .modal {
+    *:not(svg):not(svg *):not(strong):not(em):not(b) {
+      all: unset;
+      display: revert;
+      list-style: none;
+    }
   }
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 a {
   text-decoration: none;
@@ -25,12 +21,10 @@ a {
   transition: $transition;
 }
 button {
-  cursor: pointer;
   background-color: transparent;
-  border: none;
   font-family: inherit;
   font-size: inherit;
-  padding: 0;
+  cursor: pointer;
 }
 img {
   display: block;
@@ -44,6 +38,7 @@ body {
   min-height: 100vh;
   position: relative;
   font-style: normal;
+  line-height: 1.5;
   height: 100%;
 }
 html {
