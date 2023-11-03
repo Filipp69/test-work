@@ -75,3 +75,19 @@
   height: 100vh;
   height: calc(var(--vh, 1vh) * 100);
 }
+
+// Safari 10.1+
+@mixin safari-only {
+  @media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) {
+      @content;
+    }
+  }
+}
+
+// Firefox 29+
+@mixin firefox-only {
+  @media all and (min--moz-device-pixel-ratio: 0) and (min-resolution: 3e1dpcm) {
+    @content;
+  }
+}
