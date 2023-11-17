@@ -21,12 +21,12 @@ mixin input(data)
         data.imageError = 'input-error'
       }
     }
-  .inputholder.form__inputholder(class=(data.width ? `inputholder--width-${data.width}` : ""))(data-custom-mask=data.mask ? true : undefined)
+  .inputholder.form__inputholder(class=(data.width ? `inputholder--width-${data.width}` : "") data-custom-mask=data.mask ? true : undefined)
     if data.label
       label.inputholder__label(data-default-label)=data.label
     input.inputholder__input(type=(data.type || "text") placeholder=(data.placeholder) data-required=(data.required) data-text-error=(data.error))&attributes(
       attributes)
-      
+
 //- Примеры использования
 
 //- +input({
