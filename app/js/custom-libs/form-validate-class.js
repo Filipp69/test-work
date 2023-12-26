@@ -30,18 +30,18 @@ class formValidator {
                 });
             });
 
-            formSingle.addEventListener('submit', () => {
-                if (this.customEvents && this.customEvents.validForm) {
-                    event.preventDefault();
-                    this.trigger(formSingle, 'validForm');
-                }
+            // formSingle.addEventListener('submit', () => {
+            //     if (this.customEvents && this.customEvents.validForm) {
+            //         event.preventDefault();
+            //         this.trigger(formSingle, 'validForm');
+            //     }
 
-                this.isFieldValid(formSingle);
-                if (formSingle.classList.contains('invalid')) {
-                    event.preventDefault();
-                    this.fakeButtonEvent(formSingle);
-                }
-            });
+            //     this.isFieldValid(formSingle);
+            //     if (formSingle.classList.contains('invalid')) {
+            //         event.preventDefault();
+            //         this.fakeButtonEvent(formSingle);
+            //     }
+            // });
 
             formSingle.addEventListener('change', (e) => {
                 this.changeFormFieldsEvent(formSingle, e.target);
