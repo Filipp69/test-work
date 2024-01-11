@@ -15,7 +15,7 @@
 }
 
 @mixin hover {
-  @media (any-hover: hover) {
+  @media (any-hover: hover) and (min-width: 992px) {
     &:hover {
       @content;
     }
