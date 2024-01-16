@@ -4,15 +4,17 @@ class customInputMask {
     this.input = this.parent.querySelector("[data-mask-tel]");
     this.parentClass = options.parentClass || "input-mask";
     this.validationData = options.validationData || null;
+    this.placeholder  = options.placeholder || false; 
     if (options.needDropdown) {
       this.needDropdown = options.needDropdown;
       this.dropdown = null;
       this.dropdownItems = null;
       this.dropdownButton = null;
+      this.dropdownSearch = options.dropdownSearch || false;
+      this.dropdownSearchInput = null;
       this.activeCountry = options.activeCountry || "ru";
       this.onlyCountries = options.onlyCountries || null;
       this.excludeCountries = options.excludeCountries || null;
-      this.dropNameTmp = options.dropNameTmp || `rus (en)`;
       if (options.needFlags) {
         this.needFlags = options.needFlags;
         this.flagWidth = options.flagWidth || 18;
@@ -56,18 +58,34 @@ class customInputMask {
             class="${this.parentClass}__options" 
             data-input-mask-options
         >
-            ${this.dropListItems()}
+          ${this.dropdownSearch ? 
+            `
+              <div class="inputholder">
+                <input class="inputholder__input" type="text" data-input-mask-search placeholder="Поиск">
+              </div>
+            ` : ''}
+          ${this.dropListItems()}
         </div>
-    `;
+    `; 
 
     this.parent.insertAdjacentHTML("afterbegin", dropdownHolder);
     this.dropdown = this.parent.querySelector("[data-input-mask-options]");
     this.dropdownItems = this.parent.querySelectorAll("[data-input-mask-code]");
+    if(this.dropdownSearch) {
+      this.dropdownSearchInput = this.parent.querySelector("[data-input-mask-search]");
+    }
   }
 
   // отрисовка элементов внутри списка стран
   dropListItems() {
-    const countries = this.getCountryList();
+    let currentLang = document.querySelector('html').getAttribute('lang');
+    let sortCountries;
+    if(currentLang == 'ru') {
+      sortCountries = Object.entries(this.getCountryList()).sort((a, b) => a[1].rus.localeCompare(b[1].rus));
+    } else {
+      sortCountries = Object.entries(this.getCountryList()).sort((a, b) => a[1].en.localeCompare(b[1].en));
+    }
+    let countries = Object.fromEntries (sortCountries);
     let dropdownItem = "";
     let flagTmp = "";
 
@@ -90,11 +108,14 @@ class customInputMask {
             >
                 <div 
                     class="${this.parentClass}__options-country"
+                    data-input-mask-title
                 >
                     ${this.nameTemplate(countryInfo)}
                 </div>
                 <div 
-                    class="${this.parentClass}__options-code">
+                    class="${this.parentClass}__options-code"
+                    data-input-mask-phone-code
+                >
                     ${countryInfo.code}
                 </div>
                 ${flagTmp}
@@ -146,8 +167,9 @@ class customInputMask {
             class="${this.parentClass}__flag 
             ${this.parentClass}__${type}-flag" 
             ${type == "button" ? "data-input-mask-flag" : ""}
-            style="background-position: ${this.calcBgPosition(flag)};"
-        ></div>
+        >
+          <span style="background-position: ${this.calcBgPosition(flag)};" data-input-mask-el class="input-mask__flag-el"></span>
+        </div>
     `;
   }
 
@@ -182,8 +204,20 @@ class customInputMask {
       });
     });
 
-    document.addEventListener("keydown", () => {
-      // this.dropdownSearch();
+    if(this.dropdownSearch) {
+      this.dropdownSearchInput.addEventListener("keyup", () => {
+        this.dropdownSearching();
+      });
+    }
+  }
+
+  dropdownSearching() {
+    this.dropdownItems.forEach((option) => {
+      if(option.textContent.trim().toLowerCase().indexOf(this.dropdownSearchInput.value.toLowerCase()) != -1) {
+        option.classList.remove("hidden");
+      } else {
+        option.classList.add("hidden");
+      }
     });
   }
 
@@ -222,7 +256,7 @@ class customInputMask {
   // замена контента кнопки при выборе страны
   dropListButtonContent() {
     if (this.needFlags) {
-      const flagButton = this.parent.querySelector("[data-input-mask-flag]");
+      const flagButton = this.parent.querySelector("[data-input-mask-flag] [data-input-mask-el]");
       const flagOrder = customCountries[this.activeCountry].flagOrder;
       flagButton.style.backgroundPosition = this.calcBgPosition(flagOrder);
       return;
@@ -254,17 +288,12 @@ class customInputMask {
 
   // шаблон для вывода навания стран
   nameTemplate(item) {
-    const mapObj = {
-      en: item.en,
-      local: item.local,
-      rus: item.rus,
-    };
-    return this.dropNameTmp
-      .replace(/en|local|rus/gi, function (matched) {
-        return mapObj[matched];
-      })
-      .replace(/\(\)/g, "")
-      .replace(/\[\]/g, "");
+    let currentLang = document.querySelector('html').getAttribute('lang');
+    if(currentLang == 'ru') {
+      return item.rus
+    } else {
+      return item.en
+    }
   }
 
   // получаем список стран по настройкам
@@ -355,6 +384,9 @@ class customInputMask {
       ))(0);
     this.first = [...this.pattern].findIndex((c) => this.slots.has(c));
     this.maxMaskLength();
+    if(this.placeholder) {
+      this.input.setAttribute('placeholder', mask)
+    }
   }
 
   // получение длины маски
