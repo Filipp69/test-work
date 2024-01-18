@@ -1,0 +1,36 @@
+.cookie {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  z-index: 9;
+}
+
+.cookie__body {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  width: calc(100% - 40px);
+  max-width: 860px;
+  padding: 18px 20px 18px 40px;
+  margin: 0 auto;
+  background-color: rgba(52, 73, 102, 0.6);
+  backdrop-filter: blur(15px);
+  border-radius: 72px;
+  @include media(max, 767) {
+    flex-direction: column;
+    padding: 24px;
+    border-radius: 24px;
+  }
+}
+
+.cookie__text {
+  font-size: 14px;
+}
+
+.cookie-agree-button {
+  @include media(max, 767) {
+    width: 100%;
+  }
+}
