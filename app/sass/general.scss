@@ -3,7 +3,7 @@
   main,
   footer,
   .modal {
-    *:not(svg):not(svg *):not(strong):not(em):not(b) {
+    *:not(svg):not(svg *):not(strong):not(em):not(b):not(del) {
       all: unset;
       display: revert;
       list-style: none;
