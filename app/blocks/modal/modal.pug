@@ -1,17 +1,18 @@
 .overlay(data-overlay="")
 
-.modal(data-modal="modal")
+.modal(data-modal="callback")
     .modal__close(data-modal-close="")
     .modal__title
-        span Поп ап с формой
-    .modal__container(data-scroll-container="" data-form="")
+        span Поп-ап с формой
+    .modal__container(data-scroll-container="" data-form="callback")
         form.form.invalid(data-validate-modal="" data-form-body="")
             .inputholder.form__inputholder
                 input.inputholder__input(type="text" placeholder="Ваше имя*" data-required="")
-            .inputholder.form__inputholder
+            .inputholder.form__inputholder(data-custom-mask="")
                 input.inputholder__input(type="tel" placeholder="Ваш телефон*" data-required="" data-mask-tel="")
             .form__buttonholder(data-form-trigger="")
                 button.form__button.button(disabled="" data-form-button="")
                     span Оставить заявку
+            include ../policy/policy.pug
         .modal__thanks(data-form-thanks="")
             p Спасибо!

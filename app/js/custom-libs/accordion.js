@@ -6,8 +6,8 @@ class Accordion {
     this.group = this.accordion.closest("[data-accordions-group]");
     this.isMobile = this.accordion.getAttribute("data-accordion") === "mobile";
     this.setOn = options.setOn || 991;
-    this.isDesctop =
-      this.accordion.getAttribute("data-accordion") === "desctop";
+    this.isDesktop =
+      this.accordion.getAttribute("data-accordion") === "desktop";
     this.unsetOn = options.unsetOn || 991;
     this.init();
   }
@@ -18,7 +18,7 @@ class Accordion {
         if (window.innerWidth <= this.setOn) {
           this.toggleItem();
         }
-      } else if (this.isDesctop) {
+      } else if (this.isDesktop) {
         if (window.innerWidth > this.unsetOn) {
           this.toggleItem();
         }

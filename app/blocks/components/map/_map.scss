@@ -1,10 +1,8 @@
 .map {
   position: relative;
-
   &__holder {
 	height: 400px;
   }
-
   &--no-touch {
 	&:before {
 	  content: '';
@@ -16,7 +14,6 @@
 	  z-index: 1;
 	}
   }
-
   &__placemark {
 	display: block;
 	white-space: nowrap;
@@ -28,6 +25,5 @@
 	border-radius: 20px;
 	transform: translate(55px, 4px);
   }
-
 }
 

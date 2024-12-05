@@ -25,7 +25,7 @@ class Cookie {
 
   checkCookie() {
     const showCookie = this.getCookieByName(this.name);
-    if (showCookie != this.value && this.parent) {
+    if (showCookie !== this.value && this.parent) {
       this.parent.style.display = "block";
     }
   }
@@ -38,8 +38,7 @@ class Cookie {
     const matches = document.cookie.match(
       new RegExp(
         "(?:^|; )" +
-          name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") +
-          "=([^;]*)"
+          name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, "\\$1") + "=([^;]*)"
       )
     );
     return matches ? decodeURIComponent(matches[1]) : undefined;

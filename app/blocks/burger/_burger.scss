@@ -1,0 +1,44 @@
+.burger {
+  z-index: 1;
+  display: none;
+  background-color: $color-error;
+  flex: 0 0 45px;
+  transition: $transition;
+  cursor: pointer;
+  @include size(45px);
+  background-position: center;
+  background-size: contain;
+  border-radius: 50%;
+  position: relative;
+  &:before,
+  &:after {
+    content: '';
+    top: 0;
+    left: 0;
+    transition: $transition;
+    background-position: center;
+    background-size: 35px;
+    @include size(100%);
+    position: absolute;
+    pointer-events: none;
+  }
+  &:before {
+    background-image: url('data:image/svg+xml,<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 11.25H30" stroke="%23252525" stroke-width="1.875" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 20H30" stroke="%23252525" stroke-width="1.875" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 28.75H30" stroke="%23252525" stroke-width="1.875" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    opacity: 1;
+  }
+  &:after {
+    background-image: url('data:image/svg+xml,<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M31.6671 8.33325L8.33374 31.6666" stroke="%23252525" stroke-opacity="0.87" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.33374 8.33325L31.6671 31.6666" stroke="%23252525" stroke-opacity="0.87" stroke-width="1.88" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+    opacity: 0;
+  }
+  @include media(max, 991) {
+	display: block;
+  }
+  &--open {
+    &:before {
+      opacity: 0;
+    }
+    &:after {
+      opacity: 1;
+    }
+  }
+}

@@ -1,6 +1,5 @@
 .button {
   transition: $transition;
-  cursor: pointer;
   &[disabled] {
     opacity: 0.7;
     pointer-events: none;

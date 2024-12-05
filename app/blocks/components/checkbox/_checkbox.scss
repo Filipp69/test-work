@@ -1,7 +1,7 @@
 .checkbox {
     display: block;
     width: fit-content;
-    min-height: 28px;
+    min-height: 34px;
     position: relative;
     cursor: pointer;
     .checkbox__input {
@@ -14,7 +14,7 @@
                 +label,
                 +span {
                     &::before {
-                        border-color: #bfc8cb;
+                        box-shadow: 0 0 0 1px rgba(40, 62, 128, 1) inset;
                     }
                 }
             }
@@ -24,40 +24,38 @@
             display: inline-flex;
             align-items: center;
             position: relative;
-            padding-left: 38px;
-            min-height: 28px;
-            font-size: 14px;
-            font-weight: 300;
+            padding-left: 54px;
+            min-height: 34px;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 150%;
             cursor: pointer;
             &::before {
                 content: "";
                 position: absolute;
                 left: 0;
                 top: 0;
-                width: 24px;
-                height: 24px;
-                background-color: #fff;
-                border: 2px solid #dbe4e7;
-                border-radius: 8px;
+                @include size(34px);
+                box-shadow: 0 0 0 1px rgba(219, 219, 219, 1) inset;
+                border-radius: 10px;
                 transition: $transition;
             }
             &::after {
                 content: "";
                 position: absolute;
-                top: 5px;
-                left: 5px;
-                width: 18px;
-                height: 18px;
-                background-color: #ca4592;
-                border-radius: 5px;
+                top: 9px;
+                left: 6px;
+                @include size(23px, 16px);
                 transition: $transition;
+                opacity: 0;
+                background-image: url('data:image/svg+xml,<svg width="23" height="16" viewBox="0 0 23 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.5 9.5L5.10878 14.1088C5.88079 14.8808 7.12928 14.891 7.91384 14.1318L22 0.5" stroke="%23283E80"/></svg>');
             }
         }
         &:not(:checked) {
             +label,
             +span {
                 &::after {
-                    transform: scale(0);
+                    opacity: 0;
                 }
             }
         }
@@ -65,10 +63,10 @@
             +label,
             +span {
                 &::before {
-                    border-color: #ca4592;
+                    box-shadow: 0 0 0 1px rgba(40, 62, 128, 1) inset;
                 }
                 &::after {
-                    transform: scale(1);
+                    opacity: 1;
                 }
             }
         }

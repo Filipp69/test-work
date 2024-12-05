@@ -19,6 +19,7 @@ a {
   text-decoration: none;
   color: unset;
   transition: $transition;
+  cursor: pointer;
 }
 button {
   background-color: transparent;
@@ -40,7 +41,6 @@ body {
   min-height: 100vh;
   position: relative;
   font-style: normal;
-  line-height: 1.5;
   height: 100%;
 }
 html {
@@ -58,6 +58,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
+  scroll-padding-top: 30px;
   display: flex;
   flex-direction: column;
   margin: 0;

@@ -9,10 +9,12 @@
   transition: $transition;
   position: relative;
   z-index: 1;
-  &:hover {
-	background-color: $color-black;
-	svg {
-	  fill: $color-white;
+  @include hover {
+	&:hover {
+	  background-color: $color-black;
+	  svg {
+		fill: $color-white;
+	  }
 	}
   }
   &:not(:last-child) {

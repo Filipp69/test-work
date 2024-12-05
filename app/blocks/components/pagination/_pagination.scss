@@ -1,0 +1,21 @@
+.pagination {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  &__item {
+	font-size: 20px;
+	font-weight: 400;
+	@include size(39px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 2px;
+	border: 1px solid rgba(172,143,98,1);
+	&.active {
+	  background-image: $color-error;
+	}
+	&:not(.active) {
+	  cursor: pointer;
+	}
+  }
+}
