@@ -1,7 +1,10 @@
-mixin button(text)
-    if(link)
+mixin button(data)
+    if(data.link)
         a.button(href="#")&attributes(attributes)
-            span=text
+            span=data.text
+    if(data.button)
+        button.button&attributes(attributes)
+            span=data.text
     else
         .button&attributes(attributes)
-            span=text
+            span=data.text

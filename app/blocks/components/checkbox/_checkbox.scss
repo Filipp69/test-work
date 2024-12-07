@@ -4,7 +4,7 @@
     min-height: 34px;
     position: relative;
     cursor: pointer;
-    .checkbox__input {
+    &__input {
         width: 1px;
         height: 1px;
         position: absolute;
