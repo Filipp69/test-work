@@ -1,12 +1,22 @@
 // colors
-$color-black: #000000;
+$color-black: #141414;
 $color-white: #FFFFFF;
+$color-grey: #F5F5F5;
+$color-grey-dark: #888888;
+
+$color-primary: #455DFF;
+
 $color-error: red;
-$color-star: yellow;
 
 // font-family
+
+$font-primary: 'Onest', sans-serif;;
 
 // transition
 
 $transition: .3s ease;
 $transition-long: .7s ease;
+
+// sizes
+
+$header-height: 80px;

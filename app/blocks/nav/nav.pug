@@ -1,9 +1,17 @@
 mixin nav(list)
-    nav.nav&attributes(attributes)
-        ul.nav__list
-            each item in list
-                li.nav__item
-                    a.nav__link(href="#")=item
+    nav.nav(data-header-menu="")&attributes(attributes)
+        .container.nav__container
+            ul.nav__list
+                each item in list
+                    li.nav__item
+                        a.nav__link(href=item.href)=item.title
+            .nav__contacts
+              .nav__social
+                +social
+              .nav__address
+                a(href="tel:+88000000000") 8 800 000-00-00
+                a(href="mailto:Email@email.ru") Email@email.ru
+
 
 //- Примеры использования
 

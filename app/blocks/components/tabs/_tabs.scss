@@ -1,29 +1,74 @@
+.tabs-how {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  &__subtitle {
+    p {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 150%;
+      @include media(max, 767) {
+        margin-top: -20px;
+        font-size: 16px;
+        line-height: 140%;
+      }
+    }
+  }
+}
 .tabs {
+  display: flex;
+  gap: 20px;
+  @include media(max, 767) {
+    flex-direction: column;
+    gap: 40px;
+  }
+
   &__nav {
-	display: flex;
-	align-items: center;
-	gap: 10px;
-	margin-bottom: 20px;
-	&-item {
-	  display: flex;
-	  align-items: center;
-	  justify-content: center;
-	  width: 200px;
-	  border: 1px solid $color-white;
-	  padding: 5px 10px;
-	  font-size: 16px;
-	  border-radius: 5px;
-	  cursor: pointer;
-	  &.active {
-		border-color: $color-black;
-		color: $color-black;
-	  }
-	}
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 380px;
+      padding: 13px 20px;
+      font-size: 20px;
+      line-height: 140%;
+      cursor: pointer;
+      color: $color-primary;
+      border-radius: 50px;
+      border: 1px solid $color-primary;
+      transition: color $transition, background-color $transition;
+
+      @include media(max, 767) {
+        width: 100%;
+        font-size: 16px;
+      }
+
+      @include hover {
+        background-color: $color-primary;
+        color: $color-white;
+      }
+
+      &.active {
+        pointer-events: none;
+        background-color: $color-primary;
+        color: $color-white;
+      }
+    }
   }
   &__fold {
-	display: none;
-	&.open {
-	  display: block;
-	}
+    visibility: hidden;
+    opacity: 0;
+	  max-height: 0;
+    transition: opacity $transition;
+    &.open {
+      visibility: visible;
+    opacity: 1;
+      max-height: inherit;
+    }
   }
 }

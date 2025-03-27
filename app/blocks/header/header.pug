@@ -2,8 +2,25 @@ include ../logo/logo.pug
 include ../nav/nav.pug
 
 header.header(data-lock-scroll)
-    .container
-        .header__row
-            //- +logo("logo.svg")(class="header__logo")
-            //include ../burger/burger.pug
-            //- +nav(["О нас", "Доставка", "Контакты"])(class="header__nav")
+  +nav([
+    { title: "О продукте", href: "#about" },
+    { title: "Преимущества", href: "#advantages" },
+    { title: "Расчёт", href: "#calculation" },
+    { title: "Технология", href: "#technology" },
+    { title: "Стать партнёром", href: "#partners" },
+    { title: "Кейсы", href: "#examples" },
+    { title: "FAQ", href: "#faq" },
+    { title: "Контакты", href: "#contacts" },
+  ])(class="header__nav")
+  .container
+      .header__row
+          +logo("logo.png")(class="header__logo")
+          .header__right
+            +button({
+                button: true,
+                text: "Свяжитесь с нами",
+                class: "button--primary no-mob",
+                "data-modal-open": "callback"
+            })
+            include ../burger/burger.pug
+

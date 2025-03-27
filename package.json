@@ -1,7 +1,7 @@
 {
-  "name": "webpack-collector",
+  "name": "fridgy",
   "version": "1.0.0",
-  "description": "webpack+gulp",
+  "description": "fridgygit remote -v",
   "author": "developer",
   "private": true,
   "main": "index.html",

@@ -9,6 +9,9 @@
 
 //blocks
 @import "breadcrumbs/_breadcrumbs";
+@import 'swiper/_swiper';
+@import "burger/_burger";
+@import "banner/_banner";
 @import "fields/_fields";
 @import "button/_button";
 @import "logo/_logo";
@@ -17,9 +20,14 @@
 @import "modal/_modal";
 @import "footer/_footer";
 @import "cookie/_cookie";
-//@import 'social/_social';
+@import 'social/_social';
+@import 'card-advantages/_card-advantages';
+@import 'card-technology/_card-technology';
+@import 'card-about/_card-about';
+@import 'card-how/_card-how';
 
 //pages
+@import 'index/_main.scss';
 
 //components
 //@import 'components/select/_select';
@@ -27,8 +35,8 @@
 //@import 'components/radio/_radio';
 //@import 'components/password-toggle/_password-toggle';
 //@import 'components/rating/_rating';
-//@import 'components/accordion/_accordion';
-//@import 'components/tabs/_tabs';
+@import 'components/accordion/_accordion';
+@import 'components/tabs/_tabs';
 //@import 'components/map/_map';
 //@import 'components/counter/_counter';
 //@import 'components/tooltip/_tooltip';

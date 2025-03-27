@@ -40,7 +40,9 @@ img {
 body {
   min-height: 100vh;
   position: relative;
+  font-family: $font-primary;
   font-style: normal;
+  color: $color-black;
   height: 100%;
 }
 html {
@@ -75,10 +77,81 @@ body {
   margin: 0 auto;
   width: 100%;
   padding: 0 20px;
-  max-width: 1200px;
+  max-width: 1220px;
 }
 .section {
+  padding: 100px 0;
+
+  @include media(max, 767) {
+    padding: 60px 0;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    @include media(max, 767) {
+      gap: 40px;
+    }
+  }
+
+  &--main {
+    margin-top: $header-height;
+    padding-top: 81px;
+    padding-bottom: 69px;
+    background-image: url(../img/image/banner-bg.png);
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    @include media(max, 767) {
+      padding-top: 432px;
+      background-image: url(../img/image/banner-bg-mob.png);
+      background-size: 100% auto;
+      background-position: center top;
+    }
+  }
+
+  &--footer {
+    background-image: url(../img/image/footer-bg.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    @include media(max, 767) {
+      background-image: url(../img/image/footer-bg-mob.jpg);
+      background-size: 100% 100%;
+      background-position: center top;
+      padding: 40px 0;
+    }
+  }
+
+  &--request {
+    background-image: url(../img/image/footer-bg.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    @include media(max, 767) {
+      background-image: url(../img/image/footer-bg-mob.jpg);
+      background-size: 100% 100%;
+      background-position: center top;
+    }
+  }
+
+  &--second-footer {
+    background-color: $color-black;
+    padding: 20px 0;
+  }
+
+  &--grey {
+    background-color: $color-grey;
+  }
+
   &--no-overflow {
     overflow: hidden;
+  }
+}
+
+.no-mob {
+  @include media(max, 767) {
+    display: none;
   }
 }

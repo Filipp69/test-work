@@ -1,0 +1,12 @@
+mixin CardAbout(data)
+  .card-about
+    .card-about__image
+        if data.image
+          img.card-about__image-pic(src=data.image alt=data.alt)
+    .card-about__content
+      if data.title
+        .card-about__title.h3
+          h3= data.title
+      if data.text
+        .card-about__text
+          p= data.text

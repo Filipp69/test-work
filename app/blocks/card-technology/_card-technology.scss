@@ -1,0 +1,70 @@
+.card-technology {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 10px;
+  @include media(max, 767) {
+    flex-direction: column;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 20px;
+
+    &--left,
+    &--right {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    &--right {
+      padding-top: 200px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 20px 30px 30px;
+    background-color: $color-white;
+    @include media(max, 767) {
+      padding: 20px;
+    }
+  }
+  &__title {
+    font-size: 20px;
+    line-height: 150%;
+  }
+  &__text {
+    color: $color-grey-dark;
+  }
+  &__image {
+    height: 300px;
+    overflow: hidden;
+    @include media(max, 767) {
+      height: 200px;
+    }
+  }
+  &__image-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &__signature {
+    max-width: 740px;
+    p {
+      font-size: 24px;
+      line-height: 150%;
+    }
+  }
+}

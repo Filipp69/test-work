@@ -1,10 +1,10 @@
 mixin button(data)
-    if(data.link)
-        a.button(href="#")&attributes(attributes)
-            span=data.text
-    if(data.button)
-        button.button&attributes(attributes)
-            span=data.text
+    if data.link
+        a.button(class=data.class href="#")&attributes(data)
+            span= data.text
+    else if data.button
+        button.button(class=data.class)&attributes(data)
+            span= data.text
     else
-        .button&attributes(attributes)
-            span=data.text
+        .button(class=data.class)&attributes(data)
+            span= data.text

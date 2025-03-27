@@ -42,26 +42,6 @@ class Tabs {
     }
   }
 
-  togglePrevArrow() {
-    if (this.controls.prev) {
-      if (!this.prevTab || !this.prevTab.hasAttribute("data-tabs-nav")) {
-        this.controls.prev.classList.add("disabled");
-      } else {
-        this.controls.prev.classList.remove("disabled");
-      }
-    }
-  }
-
-  toggleNextArrow() {
-    if (this.controls.next) {
-      if (!this.nextTab || !this.nextTab.hasAttribute("data-tabs-nav")) {
-        this.controls.next.classList.add("disabled");
-      } else {
-        this.controls.next.classList.remove("disabled");
-      }
-    }
-  }
-
   updateTabs() {
     this.activeTab = this.parent.querySelector(`[data-tabs-nav].active`);
     this.nextTab = this.activeTab.nextElementSibling;

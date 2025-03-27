@@ -1,0 +1,115 @@
+.banner {
+  display: flex;
+  flex-direction: column;
+
+  .h1 {
+    max-width: 710px;
+    margin-bottom: 64px;
+    @include media(max, 767) {
+      margin-bottom: 36px;
+    }
+  }
+
+  .list-style {
+    max-width: 600px;
+  }
+
+  &__list {
+    margin-bottom: 62px;
+    @include media(max, 767) {
+      margin-bottom: 20px;
+    }
+
+    p {
+      @include media(max, 767) {
+        line-height: 150%;
+      }
+    }
+
+    li {
+      position: relative;
+      padding-left: 36px;
+      cursor: pointer;
+      transition: all $transition;
+
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 7px;
+        transform: translateY(-50%);
+        width: 16px;
+        height: 16px;
+        background: radial-gradient(circle, #455CFF 0%, #141414 100%);
+        border-radius: 50%;
+      }
+
+      &.active::before {
+        animation: pulse 1.5s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(69, 92, 255, 0.7),
+                      0 0 0 0 rgba(69, 92, 255, 0.5);
+        }
+        50% {
+          box-shadow: 0 0 0 10px rgba(69, 92, 255, 0),
+                      0 0 0 20px rgba(69, 92, 255, 0);
+        }
+        100% {
+          box-shadow: 0 0 0 0 rgba(69, 92, 255, 0),
+                      0 0 0 0 rgba(69, 92, 255, 0);
+        }
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        left: 170px;
+        bottom: 0;
+        height: 1px;
+        width: 0;
+        background: linear-gradient(90deg, rgba(69, 93, 255, 0.2) 0%, #455DFF 100%);
+        transition: width $transition-long;
+        @include media(max, 767) {
+          display: none;
+        }
+      }
+
+      &.active::after {
+        width: 661px;
+      }
+    }
+  }
+
+  &__link {
+    position: relative;
+    width: fit-content;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 140%;
+    color: $color-primary;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      height: 1px;
+      width: 100%;
+      background: $color-primary;
+      transition: width $transition-long;
+    }
+
+    @include hover {
+      &::after {
+        width: 0;
+      }
+    }
+  }
+}

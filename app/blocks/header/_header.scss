@@ -4,4 +4,35 @@
   left: 0;
   width: 100%;
   z-index: 5;
+  background-color: $color-white;
+  transition: background-color $transition-long;
+
+  &.menu-open {
+    .header__logo {
+      @include media(max, 767) {
+        opacity: 0;
+        pointer-events: none;
+      }
+    }
+  }
+
+  &__logo {
+    transition: opacity $transition;
+  }
+
+  &:has(.burger--open) {
+    background-color: transparent;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: $header-height;
+  }
+
+  &__right {
+    display: flex;
+    gap: 20px;
+  }
 }

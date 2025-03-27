@@ -1,0 +1,14 @@
+mixin swiper(className, paginationId, swiperData, buttons = true)
+  .swiper-container(class=className data-swiper=swiperData)
+    .swiper-wrapper
+      block
+    .swiper-controls
+      if buttons
+        .swiper-button-wrapper
+          .swiper-button-prev(data-swiper-button-prev)
+            svg(width="40" height="40")
+              use(href='#icon-arrow')
+          .swiper-button-next(data-swiper-button-next)
+            svg(width="40" height="40")
+              use(href='#icon-arrow-right')
+      .swiper-pagination(data-swiper-pagination=paginationId)

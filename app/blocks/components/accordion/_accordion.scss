@@ -1,38 +1,97 @@
 .accordion {
-  border-bottom: 1px solid $color-black;
+  background-color: $color-white;
+  padding: 20px 30px;
+  border-radius: 10px;
+  transition: box-shadow $transition;
+
+  @include media(max, 767) {
+    padding: 20px;
+  }
+
+  &.active {
+    svg {
+      transform: rotate(45deg);
+    }
+  }
+
+  @include hover {
+    svg {
+      color: $color-primary;
+    }
+  }
+
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 150%;
+  }
+
+  svg {
+    transition: color $transition, transform $transition;
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 20px;
+    @include media(max, 767) {
+      flex-direction: column;
+    }
+
+    h3 {
+      width: 380px;
+      @include media(max, 767) {
+        width: 100%;
+      }
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
   &__toggle {
-	padding: 15px 50px 15px 0;
-	cursor: pointer;
-	position: relative;
-	gap: 10px;
-	display: flex;
-	justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
   }
+
   &__title {
-	font-weight: bold;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 140%;
   }
+
   &__btn {
-	@include size(24px);
-	position: relative;
-	flex: 0 0 24px;
-	&:before {
-	  background-image: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9L12 15L18 9" stroke="black" stroke-opacity="0.87" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
-	  position: absolute;
-	  top: 0;
-	  left: 0;
-	  content: '';
-	  @include size(24px);
-	  transition: $transition;
-	}
-	.active &:before {
-	  transform: scale(-1);
-	}
+    width: 24px;
+    height: 24px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
+
   &__content {
-	height: 0;
-	overflow: hidden;
-	&-box {
-	  margin-bottom: 30px;
-	}
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height $transition;
+
+    &-box {
+      margin-top: 20px;
+      @include media(max, 767) {
+        margin-top: 10px;
+      }
+    }
+
+    .text {
+      width: 780px;
+      @include media(max, 767) {
+        width: 100%;
+      }
+    }
   }
 }

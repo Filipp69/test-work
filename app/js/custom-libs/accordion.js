@@ -1,36 +1,24 @@
 class Accordion {
-  constructor(parent, options) {
+  constructor(parent) {
     this.accordion = parent;
     this.button = this.accordion.querySelector("[data-accordion-toggle]");
     this.content = this.accordion.querySelector("[data-accordion-content]");
     this.group = this.accordion.closest("[data-accordions-group]");
-    this.isMobile = this.accordion.getAttribute("data-accordion") === "mobile";
-    this.setOn = options.setOn || 991;
-    this.isDesktop =
-      this.accordion.getAttribute("data-accordion") === "desktop";
-    this.unsetOn = options.unsetOn || 991;
+
     this.init();
   }
 
   init() {
     this.button.addEventListener("click", () => {
-      if (this.isMobile) {
-        if (window.innerWidth <= this.setOn) {
-          this.toggleItem();
-        }
-      } else if (this.isDesktop) {
-        if (window.innerWidth > this.unsetOn) {
-          this.toggleItem();
-        }
-      } else {
-        this.toggleItem();
-      }
+      this.toggleItem();
     });
   }
 
   toggleItem() {
     this.toggleGroup();
-    if (this.accordion.classList.contains("active")) {
+    const isActive = this.accordion.classList.contains("active");
+
+    if (isActive) {
       this.toggle(this.accordion, this.content, "remove");
     } else {
       this.toggle(this.accordion, this.content, "add");
@@ -39,26 +27,21 @@ class Accordion {
 
   toggleGroup() {
     if (this.group) {
-      const prev = this.group.querySelector(".active");
-      if (prev && !this.accordion.classList.contains("active")) {
-        const content = prev.querySelector("[data-accordion-content]");
-        this.toggle(prev, content, "remove");
+      const prev = this.group.querySelector(".accordion.active");
+      if (prev && prev !== this.accordion) {
+        const prevContent = prev.querySelector("[data-accordion-content]");
+        this.toggle(prev, prevContent, "remove");
       }
     }
   }
 
   toggle(button, content, status) {
     button.classList[status]("active");
+
     if (status === "add") {
-      slideDown({
-        el: content,
-        timeout: 300,
-      });
+      content.style.maxHeight = content.scrollHeight + "px";
     } else {
-      slideUp({
-        el: content,
-        timeout: 300,
-      });
+      content.style.maxHeight = "0px";
     }
   }
 }

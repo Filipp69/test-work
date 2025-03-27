@@ -1,1 +1,37 @@
 footer.footer(data-lock-scroll)
+  .section.section--footer#contacts
+    .container
+      .h2
+        h2 контактная информация
+      .footer__contacts
+        .footer__address
+          .footer__address
+            .footer__contact-item
+              a(href="tel:+88000000000") 8 800 000-00-00
+              button.button.button--copy(type="button" data-copy="8 800 000-00-00" title="Копировать номер")
+                svg(width="24" height="24")
+                  use(href="#icon-copy")
+            .footer__contact-item
+              a(href="mailto:Email@email.ru") Email@email.ru
+              button.button.button--copy(type="button" data-copy="Email@email.ru" title="Копировать email")
+                svg(width="24" height="24")
+                  use(href="#icon-copy")
+        .footer__social
+          +social
+        +button({
+                button: true,
+                text: "Оставить обращение",
+                class: "button--white",
+                "data-modal-open": "callback"
+            })
+  .section.section--second-footer
+    .container
+      .footer__info
+        .footer__copyright
+          p ООО «Смартикс»
+          p 2025© Все права защищены
+        .footer__details
+          p ИНН: XXXXXXXXXX
+          p КПП: XXXXXXXXXXXXXXXX
+          p БИК: XXXXXXXXXXXXXXXX
+

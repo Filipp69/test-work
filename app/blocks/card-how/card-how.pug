@@ -1,0 +1,12 @@
+mixin CardHow(data)
+  .card-how
+    .card-how__content
+      if data.number
+        .card-how__number.number
+          h3= data.number
+      if data.text
+        .card-how__text
+          p= data.text
+    .card-how__image
+        if data.image
+          img.card-how__image-pic(src=data.image alt=data.alt)

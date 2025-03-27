@@ -1,15 +1,15 @@
 mixin accordion(data)
-    .accordion(data-accordion=`${data.type ? data.type : ''}`)&attributes(attributes)
+    .accordion&attributes(attributes)
         .accordion__toggle(data-accordion-toggle)
             .accordion__title
-                span=data.title
+                span= data.title
             .accordion__btn
+              svg(width="24" height="24")
+                  use(href="#icon-plus")
         .accordion__content(data-accordion-content)
             .accordion__content-box
                 if data.text
-                    p=data.text
-                else
-                    block
+                    p= data.text
 
 //- Пример использования
 
