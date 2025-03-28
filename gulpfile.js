@@ -51,7 +51,7 @@ let commonJsLibs = [
   'app/js/custom-libs/tabs.js',
   // 'app/js/custom-libs/input-file-class.js',
   // 'app/js/custom-libs/input-mask-list.js',
-  // 'app/js/custom-libs/input-mask.js',
+  'app/js/custom-libs/input-mask.js',
   // 'app/js/custom-libs/simple-map.js',
   // 'app/js/custom-libs/cookie-class.js',
   // 'app/js/custom-libs/sticky-element-class.js',

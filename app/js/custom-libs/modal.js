@@ -119,7 +119,7 @@ class Modal {
     fadeIn({
       el: modal,
       timeout: 500,
-      display: "block",
+      display: "flex",
     });
     modal.classList.add("modal--vis");
   }

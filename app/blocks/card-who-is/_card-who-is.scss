@@ -1,0 +1,63 @@
+.card-who-is {
+  display: flex;
+  gap: 40px;
+  height: 100%;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: $color-white;
+  overflow: hidden;
+  @include media(max, 767) {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    @include media(max, 767) {
+      width: 100%;
+      gap: 20px;
+    }
+  }
+
+  &__pagination-text {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    height: 0;
+    @include media(max, 767) {
+      visibility: visible;
+      opacity: 1;
+      pointer-events: all;
+      width: 100%;
+      height: auto;
+      padding: 11px 20px;
+      border-radius: 50px;
+      border: none;
+      background-color: $color-white;
+      color: $color-primary;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 140%;
+      text-align: center;
+      opacity: 1;
+      transition: background-color $transition, color $transition;
+    }
+  }
+
+  &__list {
+    width: 50%;
+    @include media(max, 767) {
+      width: 100%;
+    }
+  }
+}
+
+.card-who-is__pagination-text {
+  .swiper-slide-active & {
+    color: $color-white;
+    background-color: $color-primary;
+  }
+
+}

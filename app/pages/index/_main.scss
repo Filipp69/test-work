@@ -20,3 +20,66 @@
     margin-top: auto;
   }
 }
+
+.card-cases {
+  display: flex;
+  gap: 20px;
+
+  @include media(max, 767) {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    @include media(max, 767) {
+      gap: 20px;
+    }
+  }
+
+  &__text {
+    p {
+      @include media(max, 767) {
+        font-size: 14px;
+        line-height: 150%;
+      }
+    }
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  &__slider-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    width: 100%;
+    min-height: 200px;
+    padding: 30px 20px;
+    background: linear-gradient(0deg, #455DFF 0%, rgba(69, 93, 255, 0.60) 70%, rgba(69, 93, 255, 0.00) 100%);
+
+    @include media(max, 767) {
+      min-height: 103px;
+      padding: 20px;
+    }
+
+    h3 {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 150%;
+      text-transform: uppercase;
+      color: $color-white;
+
+      @include media(max, 767) {
+        font-size: 14px;
+        font-weight: 400;
+        text-transform: none;
+      }
+    }
+  }
+}

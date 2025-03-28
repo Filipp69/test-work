@@ -2,17 +2,52 @@
 
 .modal(data-modal="callback")
     .modal__close(data-modal-close="")
-    .modal__title
-        span Поп-ап с формой
+      svg(width="32" height="32")
+          use(href="#icon-cross")
     .modal__container(data-scroll-container="" data-form="callback")
+        .modal__title
+          .h3
+            span Заказать звонок
         form.form.invalid(data-validate-modal="" data-form-body="")
+          .inputholder__wrapper
             .inputholder.form__inputholder
-                input.inputholder__input(type="text" placeholder="Ваше имя*" data-required="")
+                input.inputholder__input(type="text" placeholder="Имя*" data-required="")
             .inputholder.form__inputholder(data-custom-mask="")
-                input.inputholder__input(type="tel" placeholder="Ваш телефон*" data-required="" data-mask-tel="")
-            .form__buttonholder(data-form-trigger="")
-                button.form__button.button(disabled="" data-form-button="")
-                    span Оставить заявку
-            include ../policy/policy.pug
+                input.inputholder__input(type="tel" placeholder="Телефон*" data-required="" data-mask-tel="")
+          .form__buttonholder(data-form-trigger="")
+            button.form__button.button.button--primary(disabled="" data-form-button="")
+                span Отправить
+          include ../policy/policy.pug
         .modal__thanks(data-form-thanks="")
-            p Спасибо!
+            .modal__title
+              .h3
+                  span Спасибо!
+            .modal__thanks-text
+                p Ваша заявка отправлена, <br>мы свяжемся с вами в ближайшее время
+
+.modal(data-modal="bid")
+    .modal__close(data-modal-close="")
+      svg(width="32" height="32")
+          use(href="#icon-cross")
+    .modal__container(data-scroll-container="" data-form="bid")
+        .modal__title
+          .h3
+            span Оставить заявку
+        form.form.invalid(data-validate-modal="" data-form-body="")
+          .inputholder__wrapper
+            .inputholder.form__inputholder
+                input.inputholder__input(type="text" placeholder="Имя*" data-required="")
+            .inputholder.form__inputholder(data-custom-mask="")
+                input.inputholder__input(type="tel" placeholder="Телефон*" data-required="" data-mask-tel="")
+            .inputholder.form__inputholder
+                input.inputholder__input(type="email" placeholder="Email*" data-required="")
+          .form__buttonholder(data-form-trigger="")
+            button.form__button.button.button--primary(disabled="" data-form-button="")
+                span Отправить
+          include ../policy/policy.pug
+        .modal__thanks(data-form-thanks="")
+            .modal__title
+              .h3
+                  span Спасибо!
+            .modal__thanks-text
+                p Ваша заявка отправлена, <br>мы свяжемся с вами в ближайшее время

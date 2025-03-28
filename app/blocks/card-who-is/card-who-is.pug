@@ -1,0 +1,16 @@
+mixin CardWhoIs(data)
+  if data.paginationText
+    .card-who-is__pagination-text
+      h3= data.paginationText
+  .card-who-is
+    .card-who-is__content
+      if data.title
+        .card-who-is__title.h3
+          h3= data.title
+    .card-who-is__list
+      if data.listItems && data.listItems.length
+        ul.list-style
+          each item in data.listItems
+            li
+              p= item
+

@@ -46,6 +46,11 @@ block mainwrapper
             text: "Система легко адаптируется под разные форматы бизнеса, от небольших офисов до крупных предприятий."
         })
 
+    section.section#calculation
+      .container
+        .h2
+          h2 Экономические показатели и расчёт окупаемости
+
     section.section.section--no-overflow
       .container
         .h2
@@ -121,7 +126,134 @@ block mainwrapper
                 button: true,
                 text: "Оставить заявку",
                 class: "button--white request__button",
-                "data-modal-open": "callback"
+                "data-modal-open": "bid"
+            })
+
+    section.section.section--no-overflow#examples
+      .container
+        .h2
+          h2 Наши кейсы
+        .tabs-cases.tabs-examples(data-tabs="")
+          .tabs-cases__folds
+              .tabs-cases__fold.open(data-tabs-fold="1")
+                .card-cases
+                  .card-cases__content
+                    .card-cases__stat
+                      .h3
+                        h3 100 000
+                      .card-cases__text
+                        p Каждый из нас понимает очевидную вещь: консультация с широким активом.
+                    .card-cases__stat
+                      .h3
+                        h3 20
+                      .card-cases__text
+                        p Каждый из нас понимает очевидную вещь: консультация с широким активом.
+                  +swiper("swiper-cases", "pagination-id", "sliderCases", true)
+                    .swiper-slide(style="background-image: url(../../img/image-content/slider-cases.jpg)")
+                      .card-cases__slider-title
+                        h3 Каждый из нас понимает: консультация с широким активом. Каждый из нас понимает очевидную вещь
+                    .swiper-slide(style="background-image: url(../../img/image-content/slider-cases.jpg)")
+                      .card-cases__slider-title
+                        h3 Каждый из нас понимает:
+
+              .tabs-cases__fold(data-tabs-fold="2")
+                .card-cases
+                  .card-cases__content
+                    .card-cases__stat
+                      .h3
+                        h3 100 000
+                      .card-cases__text
+                        p Каждый из нас понимает очевидную вещь: консультация с широким активом.
+                    .card-cases__stat
+                      .h3
+                        h3 20
+                      .card-cases__text
+                        p Каждый из нас понимает очевидную вещь: консультация с широким активом.
+                  +swiper("swiper-cases", "pagination-id", "sliderCases", true)
+                    .swiper-slide(style="background-image: url(../../img/image-content/slider-cases.jpg)")
+                      .card-cases__slider-title
+                        h3 Каждый из нас понимает: консультация с широким активом. Каждый из нас понимает очевидную вещь
+
+              .tabs-cases__fold(data-tabs-fold="3")
+                .card-cases
+                  .card-cases__content
+                    .card-cases__stat
+                      .h3
+                        h3 100 000
+                      .card-cases__text
+                        p Каждый из нас понимает очевидную вещь: консультация с широким активом.
+                    .card-cases__stat
+                      .h3
+                        h3 20
+                      .card-cases__text
+                        p Каждый из нас понимает очевидную вещь: консультация с широким активом.
+                  +swiper("swiper-cases", "pagination-id", "sliderCases", true)
+                    .swiper-slide(style="background-image: url(../../img/image-content/slider-cases.jpg)")
+                      .card-cases__slider-title
+                        h3 Каждый из нас понимает: консультация с широким активом. Каждый из нас понимает очевидную вещь
+                    .swiper-slide(style="background-image: url(../../img/image-content/slider-cases.jpg)")
+                      .card-cases__slider-title
+                        h3 Каждый из нас понимает:
+          .tabs-cases__nav
+              .tabs-cases__nav-item.active(data-tabs-nav="1")
+                  img(src="../../img/image-content/samokat.png", alt="")
+              .tabs-cases__nav-item(data-tabs-nav="2")
+                  img(src="../../img/image-content/grow-food.png", alt="")
+              .tabs-cases__nav-item(data-tabs-nav="3")
+                  img(src="../../img/image-content/delivery-food.png", alt="")
+
+    section.section.section--grey.section--no-overflow#examples
+      .container
+        .h2
+          h2 Кому подойдёт микромаркет
+        +swiper("slider-who-is", "pagination-id", "sliderWhoIs", false)
+          .swiper-slide
+            +CardWhoIs({
+                paginationText: "Собственникам помещений",
+                title: "Привлекайте арендаторов и увеличивайте доход без лишних затрат",
+                listItems: [
+                    "Дополнительный поток посетителей и повышение удовлетворённости арендаторов.",
+                    "Современный сервис, повышающий конкурентоспособность недвижимости.",
+                    "Новый источник дохода без больших инвестиций."
+                ]
+            })
+          .swiper-slide
+            +CardWhoIs({
+                paginationText: "Производителям еды и напитков, кафе и ресторанам",
+                title: "заголовок поменьше",
+                listItems: [
+                    "Дополнительный поток посетителей и повышение удовлетворённости арендаторов.",
+                    "Современный сервис, повышающий конкурентоспособность недвижимости."
+                ]
+            })
+          .swiper-slide
+            +CardWhoIs({
+                paginationText: "Продуктовым магазинам и ритейлу",
+                title: "Привлекайте арендаторов и увеличивайте доход без лишних затрат Привлекайте арендаторов и увеличивайте доход без лишних затрат",
+                listItems: [
+                    "Дополнительный поток посетителей и повышение удовлетворённости арендаторов.",
+                ]
+            })
+          .swiper-slide
+            +CardWhoIs({
+                paginationText: "Отелям, ЖК, базам отдыха и сфере услуг",
+                title: "Привлекайте арендаторов и увеличивайте доход без лишних затрат",
+                listItems: [
+                    "Дополнительный поток посетителей и повышение удовлетворённости арендаторов.",
+                    "Современный сервис, повышающий конкурентоспособность недвижимости.",
+                    "Дополнительный поток посетителей и повышение удовлетворённости арендаторов.",
+                    "Современный сервис, повышающий конкурентоспособность недвижимости.",
+                    "Новый источник дохода без больших инвестиций."
+                ]
+            })
+          .swiper-slide
+            +CardWhoIs({
+                paginationText: "Предпринимателям: малому и микробизнесу",
+                title: "Привлекайте арендаторов и увеличивайте доход без лишних затрат",
+                listItems: [
+                    "Дополнительный поток посетителей и повышение удовлетворённости арендаторов.",
+                    "Современный сервис, повышающий конкурентоспособность недвижимости.",
+                ]
             })
 
     section.section.section--request
@@ -136,7 +268,7 @@ block mainwrapper
                 button: true,
                 text: "Оставить заявку",
                 class: "button--white request__button",
-                "data-modal-open": "callback"
+                "data-modal-open": "bid"
             })
 
     section.section.section--no-overflow#about

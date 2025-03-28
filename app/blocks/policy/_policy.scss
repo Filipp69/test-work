@@ -1,8 +1,12 @@
 .policy {
+  text-align: center;
   p {
-	font-size: 14px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 150%;
+    color: $color-grey-dark;
   }
   a {
-	text-decoration: underline;
+    color: $color-primary;
   }
 }

@@ -33,11 +33,10 @@ function toggleBurgerMenu(burgerButton) {
 // Функция для закрытия меню при клике на ссылку
 function setupNavLinks() {
   const navLinks = document.querySelectorAll(".nav__link");
-  const burgerButton = document.querySelector(".burger"); // или ваш селектор для бургер-кнопки
+  const burgerButton = document.querySelector(".burger");
 
   navLinks.forEach(link => {
       link.addEventListener("click", () => {
-          // Закрываем меню, если оно открыто
           if (burgerButton.classList.contains("burger--open")) {
               const burgerMenu = document.querySelector("[data-header-menu]");
               const header = document.querySelector(".header");

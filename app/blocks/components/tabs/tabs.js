@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const tabsElement = document.querySelector("[data-tabs]");
-  if (tabsElement) {
-    new Tabs(tabsElement, {});
-  }
+  const tabsElements = document.querySelectorAll("[data-tabs]");
+
+  tabsElements.forEach(tabsElement => {
+    if (tabsElement) {
+      new Tabs(tabsElement, {});
+    }
+  });
 });

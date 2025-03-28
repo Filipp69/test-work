@@ -16,33 +16,53 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 500px;
+  max-width: 580px;
   width: calc(100% - 20px);
   max-height: 95vh;
   background-color: $color-white;
   z-index: 11;
   border-radius: 20px;
+
+  @include media(max, 767) {
+    width: 100%;
+    max-height: 100vh;
+    @include adaptive-height;
+    border-radius: 0;
+    align-items: center;
+    max-width: inherit;
+  }
+
   &__close {
     position: absolute;
     top: 20px;
     right: 20px;
-    @include size(24px);
+    @include size(32px);
     cursor: pointer;
-    background-image: url('data:image/svg+xml,<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.0002 5L5.00024 19" stroke="black" stroke-opacity="0.87" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.00024 5L19.0002 19" stroke="black" stroke-opacity="0.87" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>');
     z-index: 1;
+    transition: transform $transition;
+
+    @include hover {
+      transform: rotate(90deg);
+    }
   }
   &__container {
-    padding: 0 20px 20px;
+    padding: 0 30px 60px;
+    width: 100%;
     max-height: calc(80vh - 70px);
     overflow: auto;
+    @include media(max, 767) {
+      margin-bottom: 25px;
+      margin-top: 30px;
+      max-height: calc(100vh - 130px);
+    }
   }
   &__title {
-    font-size: 26px;
-    line-height: 1.2;
-    padding: 20px;
+    padding: 60px 30px 40px;
+    text-align: center;
   }
   &__thanks{
     display: flex;
+    flex-direction: column;
     pointer-events: none;
     opacity: 0;
     position: absolute;
