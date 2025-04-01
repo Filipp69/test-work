@@ -1,0 +1,19 @@
+mixin CardCalc(data)
+  .card-calc(class=data.unvisible ? 'unvisible' : '')
+    if !data.onlyText
+      .card-calc__info
+        .card-calc__title
+          p= data.calculationTitle
+        .card-calc__text
+          p= data.calculationText
+      .card-calc__more-info
+        .card-calc__title
+          p= data.calculationTitleMore
+        .card-calc__text
+          each paragraph in data.calculationTextMore
+            p= paragraph
+    if data.onlyText
+      .card-calc__text
+          p= data.onlyText
+
+

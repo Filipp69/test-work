@@ -50,6 +50,282 @@ block mainwrapper
       .container
         .h2
           h2 Экономические показатели и расчёт окупаемости
+        .tabs-calc(data-tabs="")
+          .tabs-calc__title
+            .h3
+              h3 Рассчитайте окупаемость проекта со своими значениями:
+          .tabs-calc__sub-title
+            p Количество микромаркетов:
+          .tabs-calc__nav
+            .tabs-calc__nav-item.active(data-tabs-nav="1")
+                span 1
+            .tabs-calc__nav-item(data-tabs-nav="2")
+                span 2
+            .tabs-calc__nav-item(data-tabs-nav="3")
+                span 3
+            .tabs-calc__nav-item(data-tabs-nav="4")
+                span 4
+          .tabs-calc__folds.custom-scroll
+            .tabs-calc__fold.open(data-tabs-fold="1")
+              .card-calc__wrapper
+                +CardCalc({
+                  calculationTitle: '185 000 ₽',
+                  calculationText: 'Инвестиции',
+                  calculationTitleMore: 'Расчёт окупаемости',
+                  calculationTextMore: ['При инвестиции в 185 000 рублей окупаемость наступает за: 185 000 / 41 540 ₽ ≈ 4,5 месяца']
+                })
+                +CardCalc({
+                  calculationTitle: '6 000 ₽',
+                  calculationText: '(30 продаж по 200 руб.) Дневной оборот',
+                  calculationTitleMore: 'Дневной оборот',
+                  calculationTextMore: ['200 ₽ х 30 = 6 000 ₽']
+                })
+                +CardCalc({
+                  unvisible: true,
+                  calculationTitle: '~3000 ₽',
+                  calculationText: 'Валовая прибыль',
+                  calculationTitleMore: 'Валовая прибыль',
+                  calculationTextMore: [
+                    'Себестоимость товаров составляет 50% от оборота, то есть 3 000 ₽',
+                    'Валовая прибыль = 6 000–3 000 = 3 000 ₽'
+                  ]
+                })
+                +CardCalc({
+                  unvisible: true,
+                  calculationTitle: '930 ₽',
+                  calculationText: 'Операционные расходы (в день) ',
+                  calculationTitleMore: 'Операционные расходы (в день) ',
+                  calculationTextMore: [
+                    'Эквайринг: 2,5% от 6 000 = 150 рублей Аренда/связь: 7% от 6 000 = 420 рублей Налоги: 6% от 6 000 = 360 рублей',
+                    'Всего: 150 + 420 + 360 = 930 рублей'
+                  ]
+                })
+                +CardCalc({
+                  calculationTitle: '~2 070 ₽',
+                  calculationText: 'Чистая прибыль за рабочий день',
+                  calculationTitleMore: 'Прибыль за рабочий день',
+                  calculationTextMore: ['3 000–930 = 2 070 рублей']
+                })
+                +CardCalc({
+                  calculationTitle: '~45 540 ₽',
+                  calculationText: '(22 рабочих дня) Ежемесячная чистая прибыль',
+                  calculationTitleMore: 'Ежемесячная чистая прибыль',
+                  calculationTextMore: ['2070 ₽ x 22 = 45 540 ₽']
+                })
+                +CardCalc({
+                  calculationTitle: '4 000 ₽/мес',
+                  calculationText: 'Лицензионный платёж за программную платформу',
+                  calculationTitleMore: 'Лицензия на программную платформу',
+                  calculationTextMore: ['4 000 руб./мес']
+                })
+                +CardCalc({
+                  calculationTitle: '~41 540 ₽',
+                  calculationText: 'Чистая прибыль после вычета лицензии',
+                  calculationTitleMore: 'Чистая прибыль после вычета лицензии',
+                  calculationTextMore: ['45 540 ₽ — 4 000 ₽ = 41 540 ₽']
+                })
+                +CardCalc({
+                  unvisible: true,
+                  onlyText: ['Эти показатели демонстрируют, что даже при снижении количества продаж до 30 в день бизнес микромаркетов остаётся прибыльным и обеспечивает быструю окупаемость инвестиций всего за 4 месяца. Это делает направление особенно привлекательным для инвестиций и предпринимательской деятельности.']
+                })
+            .tabs-calc__fold(data-tabs-fold="2")
+              .card-calc__wrapper
+                +CardCalc({
+                  calculationTitle: '185 000 ₽',
+                  calculationText: 'Инвестиции',
+                  calculationTitleMore: 'Расчёт окупаемости',
+                  calculationTextMore: ['При инвестиции в 185 000 рублей окупаемость наступает за: 185 000 / 41 540 ₽ ≈ 4,5 месяца']
+                })
+                +CardCalc({
+                  calculationTitle: '6 000 ₽',
+                  calculationText: '(30 продаж по 200 руб.) Дневной оборот',
+                  calculationTitleMore: 'Дневной оборот',
+                  calculationTextMore: ['200 ₽ х 30 = 6 000 ₽']
+                })
+                +CardCalc({
+                  calculationTitle: '~2 070 ₽',
+                  calculationText: 'Чистая прибыль за рабочий день',
+                  calculationTitleMore: 'Прибыль за рабочий день',
+                  calculationTextMore: ['3 000–930 = 2 070 рублей']
+                })
+                +CardCalc({
+                  calculationTitle: '~45 540 ₽',
+                  calculationText: '(22 рабочих дня) Ежемесячная чистая прибыль',
+                  calculationTitleMore: 'Ежемесячная чистая прибыль',
+                  calculationTextMore: ['2070 ₽ x 22 = 45 540 ₽']
+                })
+                +CardCalc({
+                  calculationTitle: '4 000 ₽/мес',
+                  calculationText: 'Лицензионный платёж за программную платформу',
+                  calculationTitleMore: 'Лицензия на программную платформу',
+                  calculationTextMore: ['4 000 руб./мес']
+                })
+                +CardCalc({
+                  calculationTitle: '~41 540 ₽',
+                  calculationText: 'Чистая прибыль после вычета лицензии',
+                  calculationTitleMore: 'Чистая прибыль после вычета лицензии',
+                  calculationTextMore: ['45 540 ₽ — 4 000 ₽ = 41 540 ₽']
+                })
+                +CardCalc({
+                  unvisible: true,
+                  calculationTitle: '930 ₽',
+                  calculationText: 'Операционные расходы (в день) ',
+                  calculationTitleMore: 'Операционные расходы (в день) ',
+                  calculationTextMore: [
+                    'Эквайринг: 2,5% от 6 000 = 150 рублей Аренда/связь: 7% от 6 000 = 420 рублей Налоги: 6% от 6 000 = 360 рублей',
+                    'Всего: 150 + 420 + 360 = 930 рублей'
+                  ]
+                })
+                +CardCalc({
+                  unvisible: true,
+                  calculationTitle: '~3000 ₽',
+                  calculationText: 'Валовая прибыль',
+                  calculationTitleMore: 'Валовая прибыль',
+                  calculationTextMore: [
+                    'Себестоимость товаров составляет 50% от оборота, то есть 3 000 ₽',
+                    'Валовая прибыль = 6 000–3 000 = 3 000 ₽'
+                  ]
+                })
+                +CardCalc({
+                  unvisible: true,
+                  onlyText: ['Эти показатели демонстрируют, что даже при снижении количества продаж до 30 в день бизнес микромаркетов остаётся прибыльным и обеспечивает быструю окупаемость инвестиций всего за 4 месяца. Это делает направление особенно привлекательным для инвестиций и предпринимательской деятельности.']
+                })
+            .tabs-calc__fold(data-tabs-fold="3")
+              .card-calc__wrapper
+                +CardCalc({
+                  calculationTitle: '185 000 ₽',
+                  calculationText: 'Инвестиции',
+                  calculationTitleMore: 'Расчёт окупаемости',
+                  calculationTextMore: ['При инвестиции в 185 000 рублей окупаемость наступает за: 185 000 / 41 540 ₽ ≈ 4,5 месяца']
+                })
+                +CardCalc({
+                  calculationTitle: '6 000 ₽',
+                  calculationText: '(30 продаж по 200 руб.) Дневной оборот',
+                  calculationTitleMore: 'Дневной оборот',
+                  calculationTextMore: ['200 ₽ х 30 = 6 000 ₽']
+                })
+                +CardCalc({
+                  calculationTitle: '~2 070 ₽',
+                  calculationText: 'Чистая прибыль за рабочий день',
+                  calculationTitleMore: 'Прибыль за рабочий день',
+                  calculationTextMore: ['3 000–930 = 2 070 рублей']
+                })
+                +CardCalc({
+                  calculationTitle: '~45 540 ₽',
+                  calculationText: '(22 рабочих дня) Ежемесячная чистая прибыль',
+                  calculationTitleMore: 'Ежемесячная чистая прибыль',
+                  calculationTextMore: ['2070 ₽ x 22 = 45 540 ₽']
+                })
+                +CardCalc({
+                  calculationTitle: '4 000 ₽/мес',
+                  calculationText: 'Лицензионный платёж за программную платформу',
+                  calculationTitleMore: 'Лицензия на программную платформу',
+                  calculationTextMore: ['4 000 руб./мес']
+                })
+                +CardCalc({
+                  calculationTitle: '~41 540 ₽',
+                  calculationText: 'Чистая прибыль после вычета лицензии',
+                  calculationTitleMore: 'Чистая прибыль после вычета лицензии',
+                  calculationTextMore: ['45 540 ₽ — 4 000 ₽ = 41 540 ₽']
+                })
+                +CardCalc({
+                  unvisible: true,
+                  calculationTitle: '930 ₽',
+                  calculationText: 'Операционные расходы (в день) ',
+                  calculationTitleMore: 'Операционные расходы (в день) ',
+                  calculationTextMore: [
+                    'Эквайринг: 2,5% от 6 000 = 150 рублей Аренда/связь: 7% от 6 000 = 420 рублей Налоги: 6% от 6 000 = 360 рублей',
+                    'Всего: 150 + 420 + 360 = 930 рублей'
+                  ]
+                })
+                +CardCalc({
+                  unvisible: true,
+                  calculationTitle: '~3000 ₽',
+                  calculationText: 'Валовая прибыль',
+                  calculationTitleMore: 'Валовая прибыль',
+                  calculationTextMore: [
+                    'Себестоимость товаров составляет 50% от оборота, то есть 3 000 ₽',
+                    'Валовая прибыль = 6 000–3 000 = 3 000 ₽'
+                  ]
+                })
+                +CardCalc({
+                  unvisible: true,
+                  onlyText: ['Эти показатели демонстрируют, что даже при снижении количества продаж до 30 в день бизнес микромаркетов остаётся прибыльным и обеспечивает быструю окупаемость инвестиций всего за 4 месяца. Это делает направление особенно привлекательным для инвестиций и предпринимательской деятельности.']
+                })
+            .tabs-calc__fold(data-tabs-fold="4")
+              .card-calc__wrapper
+                +CardCalc({
+                  calculationTitle: '185 000 ₽',
+                  calculationText: 'Инвестиции',
+                  calculationTitleMore: 'Расчёт окупаемости',
+                  calculationTextMore: ['При инвестиции в 185 000 рублей окупаемость наступает за: 185 000 / 41 540 ₽ ≈ 4,5 месяца']
+                })
+                +CardCalc({
+                  calculationTitle: '6 000 ₽',
+                  calculationText: '(30 продаж по 200 руб.) Дневной оборот',
+                  calculationTitleMore: 'Дневной оборот',
+                  calculationTextMore: ['200 ₽ х 30 = 6 000 ₽']
+                })
+                +CardCalc({
+                  calculationTitle: '~2 070 ₽',
+                  calculationText: 'Чистая прибыль за рабочий день',
+                  calculationTitleMore: 'Прибыль за рабочий день',
+                  calculationTextMore: ['3 000–930 = 2 070 рублей']
+                })
+                +CardCalc({
+                  calculationTitle: '~45 540 ₽',
+                  calculationText: '(22 рабочих дня) Ежемесячная чистая прибыль',
+                  calculationTitleMore: 'Ежемесячная чистая прибыль',
+                  calculationTextMore: ['2070 ₽ x 22 = 45 540 ₽']
+                })
+                +CardCalc({
+                  calculationTitle: '4 000 ₽/мес',
+                  calculationText: 'Лицензионный платёж за программную платформу',
+                  calculationTitleMore: 'Лицензия на программную платформу',
+                  calculationTextMore: ['4 000 руб./мес']
+                })
+                +CardCalc({
+                  calculationTitle: '~41 540 ₽',
+                  calculationText: 'Чистая прибыль после вычета лицензии',
+                  calculationTitleMore: 'Чистая прибыль после вычета лицензии',
+                  calculationTextMore: ['45 540 ₽ — 4 000 ₽ = 41 540 ₽']
+                })
+                +CardCalc({
+                  unvisible: true,
+                  calculationTitle: '930 ₽',
+                  calculationText: 'Операционные расходы (в день) ',
+                  calculationTitleMore: 'Операционные расходы (в день) ',
+                  calculationTextMore: [
+                    'Эквайринг: 2,5% от 6 000 = 150 рублей Аренда/связь: 7% от 6 000 = 420 рублей Налоги: 6% от 6 000 = 360 рублей',
+                    'Всего: 150 + 420 + 360 = 930 рублей'
+                  ]
+                })
+                +CardCalc({
+                  unvisible: true,
+                  calculationTitle: '~3000 ₽',
+                  calculationText: 'Валовая прибыль',
+                  calculationTitleMore: 'Валовая прибыль',
+                  calculationTextMore: [
+                    'Себестоимость товаров составляет 50% от оборота, то есть 3 000 ₽',
+                    'Валовая прибыль = 6 000–3 000 = 3 000 ₽'
+                  ]
+                })
+                +CardCalc({
+                  unvisible: true,
+                  onlyText: ['Эти показатели демонстрируют, что даже при снижении количества продаж до 30 в день бизнес микромаркетов остаётся прибыльным и обеспечивает быструю окупаемость инвестиций всего за 4 месяца. Это делает направление особенно привлекательным для инвестиций и предпринимательской деятельности.']
+                })
+          .tabs-calc__more-info
+            .tabs-calc__show-more
+              span Показать расчёт
+              svg(width="24" height="24")
+                use(href='#icon-arrow-down')
+            +button({
+                  button: true,
+                  text: "Заявка с этим расчетом",
+                  class: "button--primary request__button",
+                  "data-modal-open": "bid"
+              })
+
 
     section.section.section--no-overflow
       .container
@@ -220,18 +496,21 @@ block mainwrapper
           .swiper-slide
             +CardWhoIs({
                 paginationText: "Производителям еды и напитков, кафе и ресторанам",
-                title: "заголовок поменьше",
+                title: "Привлекайте арендаторов и увеличивайте доход без лишних затрат",
                 listItems: [
                     "Дополнительный поток посетителей и повышение удовлетворённости арендаторов.",
-                    "Современный сервис, повышающий конкурентоспособность недвижимости."
+                    "Современный сервис, повышающий конкурентоспособность недвижимости.",
+                    "Новый источник дохода без больших инвестиций."
                 ]
             })
           .swiper-slide
             +CardWhoIs({
                 paginationText: "Продуктовым магазинам и ритейлу",
-                title: "Привлекайте арендаторов и увеличивайте доход без лишних затрат Привлекайте арендаторов и увеличивайте доход без лишних затрат",
+                title: "Привлекайте арендаторов и увеличивайте доход без лишних затрат",
                 listItems: [
                     "Дополнительный поток посетителей и повышение удовлетворённости арендаторов.",
+                    "Современный сервис, повышающий конкурентоспособность недвижимости.",
+                    "Новый источник дохода без больших инвестиций."
                 ]
             })
           .swiper-slide
@@ -239,8 +518,6 @@ block mainwrapper
                 paginationText: "Отелям, ЖК, базам отдыха и сфере услуг",
                 title: "Привлекайте арендаторов и увеличивайте доход без лишних затрат",
                 listItems: [
-                    "Дополнительный поток посетителей и повышение удовлетворённости арендаторов.",
-                    "Современный сервис, повышающий конкурентоспособность недвижимости.",
                     "Дополнительный поток посетителей и повышение удовлетворённости арендаторов.",
                     "Современный сервис, повышающий конкурентоспособность недвижимости.",
                     "Новый источник дохода без больших инвестиций."
@@ -253,6 +530,7 @@ block mainwrapper
                 listItems: [
                     "Дополнительный поток посетителей и повышение удовлетворённости арендаторов.",
                     "Современный сервис, повышающий конкурентоспособность недвижимости.",
+                    "Новый источник дохода без больших инвестиций."
                 ]
             })
 

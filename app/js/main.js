@@ -23,4 +23,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
   reorderTechnologyCards();
   window.addEventListener('resize', reorderTechnologyCards);
+
+  document.querySelectorAll(".tabs-calc__nav-item").forEach((item, index, list) => {
+    item.addEventListener("click", function () {
+        list.forEach(el => el.classList.remove("sub-active"));
+
+        list.forEach((el, i) => {
+            if (el.classList.contains("active")) {
+                for (let j = 0; j < i; j++) {
+                    list[j].classList.add("sub-active");
+                }
+            }
+        });
+    });
+  });
+
+  const showMoreBtn = document.querySelector('.tabs-calc__show-more');
+  const cardWrappers = document.querySelectorAll('.card-calc__wrapper');
+
+  if (showMoreBtn && cardWrappers.length) {
+    showMoreBtn.addEventListener('click', function() {
+      this.classList.toggle('opened');
+
+      cardWrappers.forEach(wrapper => {
+        wrapper.classList.toggle('opened');
+      });
+
+      const span = this.querySelector('span');
+      if (span) {
+        span.textContent = this.classList.contains('opened')
+          ? 'Свернуть расчёт'
+          : 'Показать расчёт';
+      }
+    });
+  }
+
 });
