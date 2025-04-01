@@ -20,26 +20,6 @@ class Tabs {
     this.navs.forEach((element) => {
       element.addEventListener("click", () => this.toggleTabs(element));
     });
-    this.arrowsToggles();
-  }
-
-  arrowsToggles() {
-    if (this.controls) {
-      if (this.controls.prev) {
-        this.controls.prev.addEventListener("click", () => {
-          if (this.prevTab && this.prevTab.hasAttribute("data-tabs-nav")) {
-            this.toggleTabs(this.prevTab);
-          }
-        });
-      }
-      if (this.controls.next) {
-        this.controls.next.addEventListener("click", () => {
-          if (this.nextTab && this.nextTab.hasAttribute("data-tabs-nav")) {
-            this.toggleTabs(this.nextTab);
-          }
-        });
-      }
-    }
   }
 
   updateTabs() {
@@ -65,8 +45,6 @@ class Tabs {
     this.toggle(element, currentFold, "add");
     this.toggle(this.activeTab, prevFold, "remove");
     this.updateTabs();
-    this.togglePrevArrow();
-    this.toggleNextArrow();
   }
 
   toggle(tab, fold, status) {

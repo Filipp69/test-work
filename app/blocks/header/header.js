@@ -56,27 +56,36 @@ function setupNavLinks() {
 
 // Функция для добавления класса active к текущей якорной ссылке
 function setActiveNavLink() {
-  const sections = document.querySelectorAll("section"); // или другие элементы, на которые ведут якоря
+  const sections = document.querySelectorAll("section");
   const navLinks = document.querySelectorAll(".nav__link");
+  const lastSection = sections[sections.length - 1];
 
   window.addEventListener("scroll", () => {
-      let current = "";
+    let current = "";
 
+    if (window.pageYOffset === 0) {
+      current = sections[0].getAttribute("id");
+    }
+    else if (window.pageYOffset >= lastSection.offsetTop) {
+      current = lastSection.getAttribute("id");
+    }
+    else {
       sections.forEach(section => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
 
-          if (pageYOffset >= sectionTop - sectionHeight / 3) {
-              current = section.getAttribute("id");
-          }
+        if (window.pageYOffset >= sectionTop - sectionHeight / 3) {
+          current = section.getAttribute("id");
+        }
       });
+    }
 
-      navLinks.forEach(link => {
-          link.classList.remove("active");
-          if (link.getAttribute("href") === `#${current}`) {
-              link.classList.add("active");
-          }
-      });
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href") === `#${current}`) {
+        link.classList.add("active");
+      }
+    });
   });
 }
 
