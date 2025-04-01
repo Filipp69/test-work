@@ -6,7 +6,7 @@ mixin CardAdvantages(data)
           h3= data.title
       if data.text
         .card-advantages__text
-          p= data.text
+          p!= data.text
     .card-advantages__image
       if data.image
         picture

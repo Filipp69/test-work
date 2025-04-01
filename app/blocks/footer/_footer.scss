@@ -50,7 +50,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-    @include media(max, 767) {
+    @include media(max, 991) {
       flex-direction: column;
       align-items: flex-start;
       gap: 40px;
@@ -79,10 +79,9 @@
 
   &__details {
     display: flex;
-    gap: 10px;
+    gap: 5px;
     @include media(max, 767) {
       flex-wrap: wrap;
-      gap: 5px;
     }
   }
 
@@ -97,6 +96,13 @@
       background-color: $color-primary;
       svg {
         color: $color-white;
+      }
+    }
+  }
+  &__contacts {
+    .button {
+      @include media(max, 767) {
+        font-size: 20px;
       }
     }
   }

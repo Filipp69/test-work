@@ -6,7 +6,7 @@ mixin CardHow(data)
           h3= data.number
       if data.text
         .card-how__text
-          p= data.text
+          p!= data.text
     .card-how__image
         if data.image
           img.card-how__image-pic(src=data.image alt=data.alt)

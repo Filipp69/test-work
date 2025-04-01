@@ -73,8 +73,12 @@ document.addEventListener("DOMContentLoaded", function () {
         new Swiper(swiperEl, {
             spaceBetween: 10,
             slidesPerView: 1,
-            // effect: 'fade',
-            // fadeEffect: { crossFade: true },
+            allowTouchMove: true,
+            breakpoints: {
+                767: {
+                    allowTouchMove: false,
+                },
+            },
             updateOnWindowResize: true,
             pagination: {
                 el: swiperEl.querySelector('.swiper-pagination'),

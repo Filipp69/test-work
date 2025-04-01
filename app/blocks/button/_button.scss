@@ -46,7 +46,7 @@
     padding: 0;
     background-color: $color-white;
     border-radius: 50%;
-
+    position: relative;
     svg {
       color: $color-black;
       transition: color $transition;
@@ -56,6 +56,31 @@
       background-color: $color-black;
       svg {
         color: $color-white;
+      }
+    }
+    .copyNotice {
+      display: flex;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      background-color: $color-white;
+      color: $color-black;
+      font-size: 12px;
+      text-transform: none;
+      line-height: 120%;
+      padding: 7px 20px;
+      border-radius: 50px;
+      bottom: calc(100% + 10px);
+      left: 0;
+      width: max-content;
+      transition: $transition;
+      @include media(max, 767) {
+        display: none;
+      }
+    }
+    &.active{
+      .copyNotice {
+        opacity: 1;
       }
     }
   }

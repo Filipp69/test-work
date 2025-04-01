@@ -14,8 +14,7 @@
   @include media(max, 767) {
     top: -100vh;
     height: 100vh;
-    padding-top: 116px;
-    padding-left: 10px;
+    padding: 115px 0;
     background-image: url(../../img/image/menu-bg-mob.jpg);
   }
 
@@ -29,6 +28,23 @@
     @include media(max, 767) {
       flex-direction: column;
       gap: 54px;
+      height: calc(100vh - 230px);
+      overflow: auto;
+      padding-left: 30px;
+      margin-right: 10px;
+      width: calc(100% - 10px);
+      &::-webkit-scrollbar {
+        width: 5px;
+        border-radius: 10px;
+        background-color: transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: $color-primary;
+        border-radius: 10px;
+      }
+      &::-webkit-scrollbar-track {
+        border-radius: 10px;
+      }
     }
   }
 

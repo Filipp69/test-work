@@ -53,6 +53,20 @@
   }
   &__text {
     color: $color-grey-dark;
+    ol,
+    ul {
+      padding-left: 30px;
+    }
+    ol {
+      li {
+        list-style-type: disc;
+      }
+    }
+    li {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 140%;
+    }
   }
   &__image {
     height: 300px;

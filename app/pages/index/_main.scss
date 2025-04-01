@@ -18,6 +18,10 @@
   }
   &__button {
     margin-top: auto;
+    @include media(max, 767) {
+      font-size: 20px;
+      line-height: 140%;
+    }
   }
 }
 
@@ -34,8 +38,10 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
+    flex: 0 0 380px;
     @include media(max, 767) {
       gap: 20px;
+      flex: 0 0 auto;
     }
   }
 

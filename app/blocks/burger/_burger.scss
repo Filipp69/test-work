@@ -6,8 +6,8 @@
   cursor: pointer;
   border-radius: 10px;
   border: 2px solid $color-primary;
-  transition: background-color $transition;
-
+  transition: $transition;
+  
   @include hover {
     background-color: $color-primary;
     span {
@@ -53,6 +53,9 @@
   }
 
   &--open {
+    @include media(max, 767) {
+      transform: translate(9px, -5px);
+    }
     span {
       @include media(max, 767) {
         background-color: $color-black;

@@ -8,5 +8,4 @@ mixin CardTechnology(data)
         .card-technology__title.h3
           h3= data.title
       if data.text
-        .card-technology__text
-          p= data.text
+        .card-technology__text!= data.text

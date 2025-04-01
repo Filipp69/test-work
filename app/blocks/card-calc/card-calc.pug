@@ -5,7 +5,7 @@ mixin CardCalc(data)
         .card-calc__title
           p= data.calculationTitle
         .card-calc__text
-          p= data.calculationText
+          p!= data.calculationText
       .card-calc__more-info
         .card-calc__title
           p= data.calculationTitleMore

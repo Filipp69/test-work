@@ -13,6 +13,7 @@
     flex-direction: column;
     width: calc(100% - 240px);
     padding: 30px;
+    justify-content: space-between;
     @include media(max, 767) {
       width: 100%;
       height: calc(100% - 240px);
@@ -27,6 +28,14 @@
     @include media(max, 767) {
       font-size: 20px;
       line-height: 140%;
+    }
+    p {
+      font-size: 24px;
+      line-height: 150%;
+      @include media(max, 767) {
+        font-size: 20px;
+        line-height: 140%;
+      }
     }
   }
 

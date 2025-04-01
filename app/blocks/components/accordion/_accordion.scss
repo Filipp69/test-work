@@ -56,8 +56,10 @@
     position: relative;
     display: flex;
     justify-content: space-between;
-    align-items: center;
     gap: 10px;
+    @include media(max, 767) {
+      align-items: center;
+    }
   }
 
   &__title {

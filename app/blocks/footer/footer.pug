@@ -7,15 +7,17 @@ footer.footer(data-lock-scroll)
         .footer__address
           .footer__address
             .footer__contact-item
-              a(href="tel:+88000000000") 8 800 000-00-00
-              button.button.button--copy(type="button" data-copy="8 800 000-00-00" title="Копировать номер")
-                svg(width="24" height="24")
-                  use(href="#icon-copy")
-            .footer__contact-item
               a(href="mailto:Email@email.ru") Email@email.ru
               button.button.button--copy(type="button" data-copy="Email@email.ru" title="Копировать email")
                 svg(width="24" height="24")
                   use(href="#icon-copy")
+                span.copyNotice E-mail скопирован в буфер обмена
+            .footer__contact-item
+              a(href="tel:+88000000000") 8 800 000-00-00
+              button.button.button--copy(type="button" data-copy="8 800 000-00-00" title="Копировать номер")
+                svg(width="24" height="24")
+                  use(href="#icon-copy")
+                span.copyNotice Телефон скопирован в буфер обмена
         .footer__social
           +social
         +button({

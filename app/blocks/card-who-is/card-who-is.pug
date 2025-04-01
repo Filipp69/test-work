@@ -6,7 +6,7 @@ mixin CardWhoIs(data)
     .card-who-is__content
       if data.title
         .card-who-is__title.h3
-          h3= data.title
+          h3!= data.title
     .card-who-is__list
       if data.listItems && data.listItems.length
         ul.list-style

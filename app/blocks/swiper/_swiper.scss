@@ -92,7 +92,11 @@
 }
 
 .swiper-how {
+  @include media(max, 767) {
+    gap: 10px;
+  }
   @include media(min, 767) {
+    
     .swiper-wrapper {
       display: flex;
       flex-direction: column;

@@ -23,6 +23,7 @@
     p {
       @include media(max, 767) {
         line-height: 150%;
+        font-size: 14px;
       }
     }
 

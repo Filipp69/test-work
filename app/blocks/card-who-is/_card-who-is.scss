@@ -8,9 +8,18 @@
   overflow: hidden;
   @include media(max, 767) {
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
+    padding: 20px;
   }
-
+  &__title {
+    &.h3 {
+      @include media(max, 767) {
+        line-height: 140%;
+        font-weight: 400;
+        text-transform: none;
+      }
+    }
+  }
   &__content {
     display: flex;
     flex-direction: column;
@@ -27,19 +36,23 @@
     pointer-events: none;
     height: 0;
     @include media(max, 767) {
+      min-height: 93px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 140%;
       visibility: visible;
-      opacity: 1;
       pointer-events: all;
       width: 100%;
       height: auto;
-      padding: 11px 20px;
+      padding: 24px 20px;
       border-radius: 50px;
       border: none;
       background-color: $color-white;
       color: $color-primary;
-      font-size: 20px;
-      font-weight: 400;
-      line-height: 140%;
       text-align: center;
       opacity: 1;
       transition: background-color $transition, color $transition;
@@ -50,6 +63,14 @@
     width: 50%;
     @include media(max, 767) {
       width: 100%;
+    }
+    .list-style li {
+      padding-left: 30px;
+    }
+    p {
+      @include media(max, 767) {
+        font-size: 20px;
+      }
     }
   }
 }
