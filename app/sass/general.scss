@@ -171,5 +171,24 @@ body {
     background: $color-primary;
     border-radius: 8px;
   }
+}
 
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.slide-in-left {
+  opacity: 0;
+  animation-fill-mode: both;
+}
+
+.slide-in-left.animate {
+  animation: slide-in-left 0.7s ease-out forwards;
 }

@@ -33,13 +33,13 @@
   &__wrapper {
     display: flex;
     gap: 20px;
-    @include media(max, 767) {
+    @include media(max, 991) {
       flex-direction: column;
     }
 
     h3 {
       width: 380px;
-      @include media(max, 767) {
+      @include media(max, 991) {
         width: 100%;
       }
     }

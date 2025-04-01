@@ -62,22 +62,21 @@ function setActiveNavLink() {
 
   window.addEventListener("scroll", () => {
     let current = "";
+    const scrollY = window.pageYOffset;
+    const windowHeight = window.innerHeight;
 
-    if (window.pageYOffset === 0) {
-      current = sections[0].getAttribute("id");
-    }
-    else if (window.pageYOffset >= lastSection.offsetTop) {
+    if (scrollY + windowHeight >= lastSection.offsetTop) {
       current = lastSection.getAttribute("id");
-    }
-    else {
-      sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
+    } else {
+      for (let i = 0; i < sections.length - 1; i++) {
+        const section = sections[i];
+        const sectionBottom = section.offsetTop + section.clientHeight;
 
-        if (window.pageYOffset >= sectionTop - sectionHeight / 3) {
+        if (scrollY < sectionBottom) {
           current = section.getAttribute("id");
+          break;
         }
-      });
+      }
     }
 
     navLinks.forEach(link => {
@@ -87,6 +86,8 @@ function setActiveNavLink() {
       }
     });
   });
+
+  window.dispatchEvent(new Event('scroll'));
 }
 
 // function scrollHeader() {

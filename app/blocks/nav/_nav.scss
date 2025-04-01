@@ -3,8 +3,9 @@
   top: -350px;
   left: 0;
   width: 100%;
-  height: 350px;
+  min-height: 350px;
   padding-top: 120px;
+  padding-bottom: 40px;
   background-image: url(../../img/image/menu-bg.jpg);
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -25,8 +26,10 @@
   &__container {
     display: flex;
     gap: 20px;
-    @include media(max, 767) {
+    @include media(max, 991) {
       flex-direction: column;
+    }
+    @include media(max, 767) {
       gap: 54px;
       height: calc(100vh - 230px);
       overflow: auto;

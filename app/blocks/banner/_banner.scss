@@ -77,7 +77,7 @@
         width: 0;
         background: linear-gradient(90deg, rgba(69, 93, 255, 0.2) 0%, #455DFF 100%);
         transition: width $transition-long;
-        @include media(max, 767) {
+        @include media(max, 991) {
           display: none;
         }
       }

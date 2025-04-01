@@ -20,7 +20,7 @@
 
   &__image {
     width: 480px;
-    height: 360px;
+    height: 100%;
     overflow: hidden;
     @include media(max, 767) {
       width: 100%;
