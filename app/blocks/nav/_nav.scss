@@ -1,6 +1,6 @@
 .nav {
   position: absolute;
-  top: -350px;
+  top: -100vh;
   left: 0;
   width: 100%;
   min-height: 350px;
@@ -13,7 +13,6 @@
   transition: top $transition-long;
 
   @include media(max, 767) {
-    top: -100vh;
     height: 100vh;
     padding: 115px 0;
     background-image: url(../img/image/menu-bg-mob.jpg);

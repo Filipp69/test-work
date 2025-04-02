@@ -1,15 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
   // Копирование текста по клику на элементы с атрибутом data-copy
-  document.querySelectorAll('[data-copy]').forEach(button => {
-    button.addEventListener('click', () => {
-      const textToCopy = button.getAttribute('data-copy');
-      navigator.clipboard.writeText(textToCopy);
-      button.classList.add('active');
-      setTimeout(() => {
-        button.classList.remove('active');
-      }, 3000);
+  let copyBlocks = document.querySelectorAll('[data-copy]');
+  if(copyBlocks.length > 0) {
+    copyBlocks.forEach(button => {
+      button.addEventListener('click', () => {
+        const textToCopy = button.getAttribute('data-copy');
+        navigator.clipboard.writeText(textToCopy);
+        button.classList.add('active');
+        setTimeout(() => {
+          button.classList.remove('active');
+        }, 3000);
+      });
     });
-  });
+  }
 
   // Управление состоянием табов калькулятора (активные/неактивные)
   document.querySelectorAll(".tabs-calc__nav-item").forEach((item, index, list) => {
