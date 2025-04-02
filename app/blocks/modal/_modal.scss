@@ -48,7 +48,7 @@
   &__container {
     padding: 0 30px 60px;
     width: 100%;
-    max-height: calc(80vh - 70px);
+    max-height: calc(95vh - 70px);
     overflow: auto;
     @include media(max, 767) {
       margin-bottom: 25px;
