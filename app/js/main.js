@@ -114,16 +114,34 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Инициализация анимации счетчиков при переключении табов
   function initCounterAnimation() {
-    document.querySelectorAll('.tabs-calc__nav-item').forEach(tab => {
-      tab.addEventListener('click', () => {
-        setTimeout(() => {
-          document.querySelectorAll('.card-calc__number[data-counter]').forEach(el => {
-            const finalValue = parseInt(el.getAttribute('data-counter').replace(/\s/g, ''));
-            animateCounter(el, finalValue);
+      document.querySelectorAll('.tabs-calc__nav-item').forEach(tab => {
+          tab.addEventListener('click', () => {
+              setTimeout(() => {
+                  startCounterAnimation();
+              }, 100);
           });
-        }, 100);
       });
-    });
+  }
+
+  function startCounterAnimation() {
+      document.querySelectorAll('.card-calc__number[data-counter]').forEach(el => {
+          const finalValue = parseInt(el.getAttribute('data-counter').replace(/\s/g, ''));
+          animateCounter(el, finalValue);
+      });
+  }
+
+  function observeCounterBlock() {
+      const targetBlock = document.querySelector('.card-calc');
+      if (!targetBlock) return;
+      const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                  startCounterAnimation();
+                  observer.disconnect();
+              }
+          });
+      }, { threshold: 0.5 });
+      observer.observe(targetBlock);
   }
 
   // Функция для определения правильного окончания
@@ -167,4 +185,5 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('resize', setUniformPaginationTextHeight);
   handleScrollAnimations();
   initCounterAnimation();
+  observeCounterBlock();
 });
