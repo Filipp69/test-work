@@ -54,31 +54,46 @@ function setupNavLinks() {
   });
 }
 
-// Функция для добавления класса active к текущей якорной ссылке
+// Функция для добавления active якорным ссылкам
 function setActiveNavLink() {
   const sections = document.querySelectorAll("section");
   const navLinks = document.querySelectorAll(".nav__link");
-  const lastSection = sections[sections.length - 1];
+  const totalSections = sections.length;
+
+  const thirdFromEndIndex = totalSections - 3;
+  const preLastIndex = totalSections - 2;
 
   window.addEventListener("scroll", () => {
     let current = "";
     const scrollY = window.pageYOffset;
     const windowHeight = window.innerHeight;
+    const windowBottom = scrollY + windowHeight;
 
-    if (scrollY + windowHeight >= lastSection.offsetTop) {
-      current = lastSection.getAttribute("id");
-    } else {
-      for (let i = 0; i < sections.length - 1; i++) {
-        const section = sections[i];
-        const sectionBottom = section.offsetTop + section.clientHeight;
+    sections.forEach((section, index) => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionBottom = sectionTop + sectionHeight;
+      const sectionId = section.id;
 
-        if (scrollY < sectionBottom) {
-          current = section.getAttribute("id");
-          break;
+      const isFirst = index === 0;
+      const isThirdFromEnd = index === thirdFromEndIndex;
+      const isPreLast = index === preLastIndex;
+
+      if (isFirst && scrollY >= sectionTop - 80) {
+        current = sectionId;
+      }
+      else if (isThirdFromEnd) {
+        if (scrollY >= sectionTop - 50 && windowBottom <= sectionBottom) {
+          current = sectionId;
         }
       }
-    }
-
+      else if (isPreLast && windowBottom >= sectionTop) {
+        current = sectionId;
+      }
+      else if (!isFirst && !isThirdFromEnd && !isPreLast && scrollY >= sectionTop - 50) {
+        current = sectionId;
+      }
+    });
     navLinks.forEach(link => {
       link.classList.remove("active");
       if (link.getAttribute("href") === `#${current}`) {
@@ -86,9 +101,9 @@ function setActiveNavLink() {
       }
     });
   });
-
   window.dispatchEvent(new Event('scroll'));
 }
+
 
 // function scrollHeader() {
 //     let header = document.querySelector('[data-header]');

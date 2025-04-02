@@ -1,5 +1,5 @@
 mixin nav(list)
-    nav.nav(data-header-menu="")&attributes(attributes)
+    nav.nav(data-header-menu="")(data-lock-scroll)&attributes(attributes)
         .container.nav__container
             ul.nav__list
                 each item in list
