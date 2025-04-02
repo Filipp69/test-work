@@ -181,14 +181,14 @@
       width: 100px;
       height: 50px;
       pointer-events: none;
-      background-image: url('../../../img/image/union-btn.svg');
+      background-image: url('../img/image/union-btn.svg');
       background-size: 100% 100%;
       background-position: center center;
       background-repeat: no-repeat;
       transition: background-color $transition;
       @include media(max, 767) {
         width: 40px;
-        background-image: url('../../../img/image/union-btn-mob.svg');
+        background-image: url('../img/image/union-btn-mob.svg');
       }
     }
 
