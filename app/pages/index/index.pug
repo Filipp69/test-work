@@ -7,48 +7,51 @@ block mainwrapper
         include /blocks/banner/banner
     section.section.section--grey#advantages
       .container
-        .h2.slide-in-left
+        .h2
           h2 Преимущества работы с нами
-        +CardAdvantages({
-            image: "img/image-content/card-advantages.jpg",
-            alt: "фото карточки",
-            title: "15 лет опыта в автоматизации торговли",
-            text: "Fridgy — дочернее предприятие компании Smartix, которая уже более 15 лет разрабатывает решения для&nbsp;самообслуживания, способные удовлетворить самые высокие требования бизнеса. Мы объединили надёжность Smartix и инновационные технологии, чтобы создать современное и прибыльное решение для автоматизации торговли."
-        })
-        +CardAdvantages({
-            image: "img/image-content/card-advantages.jpg",
-            alt: "фото карточки",
-            title: "Готовое к работе решение",
-            text: "Вы получаете готовый к работе микромаркет, не&nbsp;требующий дополнительно сложной интеграции и&nbsp;настройки."
-        })
-        +CardAdvantages({
-            image: "img/image-content/card-advantages.jpg",
-            alt: "фото карточки",
-            title: "Современные технологии",
-            text: "Встроенный модуль управления, POS-терминал и сканер штрихкодов обеспечивают удобный и понятный процесс оплаты."
-        })
-        +CardAdvantages({
-            image: "img/image-content/card-advantages.jpg",
-            alt: "фото карточки",
-            title: "Честная финансовая модель",
-            text: "Фиксированная ставка за использование программной платформы — без скрытых комиссий и процентов с&nbsp;оборота."
-        })
-        +CardAdvantages({
-            image: "img/image-content/card-advantages.jpg",
-            alt: "фото карточки",
-            title: "Поддержка на всех этапах",
-            text: "Помогаем с установкой, настройкой и оптимизацией работы микромаркета."
-        })
-        +CardAdvantages({
-            image: "img/image-content/card-advantages.jpg",
-            alt: "фото карточки",
-            title: "Гибкость и масштабируемость",
-            text: "Система легко адаптируется под разные форматы бизнеса, от небольших офисов до крупных предприятий."
-        })
+        .advantages-wrapper
+          .advantages-content
+            +CardAdvantages({
+                image: "img/image-content/card-advantages-1.svg",
+                alt: "фото карточки",
+                title: "15 лет опыта в автоматизации торговли",
+                text: "Fridgy — дочернее предприятие компании Smartix, которая уже более 15 лет разрабатывает решения для&nbsp;самообслуживания, способные удовлетворить самые высокие требования бизнеса. Мы объединили надёжность Smartix и инновационные технологии, чтобы создать современное и прибыльное решение для автоматизации торговли."
+            })
+            +CardAdvantages({
+                image: "img/image-content/card-advantages-2.svg",
+                alt: "фото карточки",
+                title: "Готовое к работе решение",
+                text: "Вы получаете готовый к работе микромаркет, не&nbsp;требующий дополнительно сложной интеграции и&nbsp;настройки."
+            })
+            +CardAdvantages({
+                image: "img/image-content/card-advantages-3.svg",
+                alt: "фото карточки",
+                title: "Современные технологии",
+                text: "Встроенный модуль управления, POS-терминал и сканер штрихкодов обеспечивают удобный и понятный процесс оплаты."
+            })
+            +CardAdvantages({
+                image: "img/image-content/card-advantages-4.svg",
+                alt: "фото карточки",
+                title: "Честная финансовая модель",
+                text: "Фиксированная ставка за использование программной платформы — без скрытых комиссий и процентов с&nbsp;оборота."
+            })
+            +CardAdvantages({
+                image: "img/image-content/card-advantages-5.svg",
+                alt: "фото карточки",
+                title: "Поддержка на всех этапах",
+                text: "Помогаем с установкой, настройкой и оптимизацией работы микромаркета."
+            })
+            +CardAdvantages({
+                image: "img/image-content/card-advantages-6.svg",
+                alt: "фото карточки",
+                title: "Гибкость и масштабируемость",
+                text: "Система легко адаптируется под разные форматы бизнеса, от небольших офисов до крупных предприятий."
+            })
+          .advantages-sticky
 
     section.section.section--no-overflow#calculation
       .container
-        .h2.slide-in-left
+        .h2
           h2 Экономические показатели и&nbsp;расчёт окупаемости
         .tabs-calc(data-tabs="")
           .tabs-calc__title
@@ -417,7 +420,7 @@ block mainwrapper
 
     section.section.section--no-overflow
       .container
-        .h2.slide-in-left
+        .h2
           h2 Как это работает?
         .tabs-how
           .tabs-how__subtitle
@@ -427,7 +430,7 @@ block mainwrapper
 
     section.section.section--grey#technology
       .container
-        .h2.slide-in-left
+        .h2
           h2 Подробнее о технологиях
         .card-technology__wrapper
           .card-technology__wrapper--left
@@ -495,7 +498,7 @@ block mainwrapper
 
     section.section.section--no-overflow#examples
       .container
-        .h2.slide-in-left
+        .h2
           h2 Наши кейсы
         .tabs-cases.tabs-examples(data-tabs="")
           .tabs-cases__folds
@@ -568,7 +571,7 @@ block mainwrapper
 
     section.section.section--grey.section--no-overflow
       .container
-        .h2.slide-in-left
+        .h2
           h2 Кому подойдёт микромаркет
         +swiper("slider-who-is", "pagination-id", "sliderWhoIs", false)
           .swiper-slide
@@ -639,7 +642,7 @@ block mainwrapper
 
     section.section.section--no-overflow
       .container
-        .h2.slide-in-left
+        .h2
           h2 О компании
         +swiper("", "pagination-id", "sliderAbout", true)
             .swiper-slide
@@ -668,7 +671,7 @@ block mainwrapper
               })
     section.section.section--grey#faq
       .container
-        .h2.slide-in-left
+        .h2
           h2 Вопросы и ответы
         .accordion__wrapper
           .h3

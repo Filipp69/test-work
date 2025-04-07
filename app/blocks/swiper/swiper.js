@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
         new Swiper(swiperEl, {
             spaceBetween: 10,
             slidesPerView: 1,
+            speed: 1000,
             updateOnWindowResize: true,
             breakpoints: {
                 767: {
@@ -73,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
         new Swiper(swiperEl, {
             spaceBetween: 10,
             slidesPerView: 1,
+            speed: 1000,
             allowTouchMove: true,
             breakpoints: {
                 767: {

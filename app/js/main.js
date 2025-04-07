@@ -180,6 +180,38 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // Создаем sticky-изображения на основе карточек
+  if (window.innerWidth > 767) {
+    const cardsContainer = document.querySelector('.advantages-content');
+    const stickyContainer = document.querySelector('.advantages-sticky');
+    const cards = Array.from(cardsContainer.querySelectorAll('.card-advantages'));
+    cards.forEach((card, index) => {
+      const imgSrc = card.querySelector('.card-advantages__image-pic')?.src ||
+                   'img/image-content/card-advantages.jpg';
+      const imgAlt = card.querySelector('.card-advantages__image-pic')?.alt ||
+                   `Преимущество ${index + 1}`;
+      const imgWrapper = document.createElement('div');
+      imgWrapper.className = 'sticky-image';
+      if (index === 0) imgWrapper.classList.add('active');
+      const img = document.createElement('img');
+      img.src = imgSrc;
+      img.alt = imgAlt;
+      imgWrapper.appendChild(img);
+      stickyContainer.appendChild(imgWrapper);
+    });
+    const images = stickyContainer.querySelectorAll('.sticky-image');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = cards.indexOf(entry.target);
+          images.forEach(img => img.classList.remove('active'));
+          if (images[index]) images[index].classList.add('active');
+        }
+      });
+    }, { threshold: 0.5 });
+    cards.forEach(card => observer.observe(card));
+  }
+
   // Инициализация всех функций
   reorderTechnologyCards();
   window.addEventListener('resize', reorderTechnologyCards);
