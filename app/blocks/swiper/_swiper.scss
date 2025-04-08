@@ -205,15 +205,3 @@
     }
   }
 }
-
-.swiper-cases {
-  .swiper-slide {
-    opacity: 0 !important;
-    transition: opacity 1s ease;
-
-    &-active,
-    &-duplicate-active {
-      opacity: 1 !important;
-    }
-  }
-}

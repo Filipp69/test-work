@@ -23,7 +23,7 @@
 .advantages-sticky {
   width: 50%;
   position: sticky;
-  top: 15%;
+  top: calc(50vh - 250px);
   align-self: flex-start;
   height: 500px;
   overflow: hidden;

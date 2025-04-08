@@ -92,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
             allowTouchMove: true,
             breakpoints: {
                 767: {
+                    spaceBetween: 0,
                     allowTouchMove: false,
                 },
             },
