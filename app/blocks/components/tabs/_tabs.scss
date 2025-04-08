@@ -185,6 +185,7 @@
       background-size: 100% 100%;
       background-position: center center;
       background-repeat: no-repeat;
+      background-color: $color-grey;
       transition: background-color $transition;
       @include media(max, 767) {
         width: 40px;
@@ -295,3 +296,4 @@
     }
   }
 }
+

@@ -62,6 +62,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  if (document.querySelector('[data-swiper="sliderCasesWarp"]')) {
+    document.querySelectorAll('[data-swiper="sliderCasesWarp"]').forEach((swiperEl) => {
+        new Swiper(swiperEl, {
+            spaceBetween: 10,
+            slidesPerView: 1,
+            updateOnWindowResize: true,
+            navigation: {
+                nextEl: swiperEl.querySelector('.swiper-button-next'),
+                prevEl: swiperEl.querySelector('.swiper-button-prev'),
+            },
+        });
+    });
+  }
+
   if (document.querySelector('[data-swiper="sliderWhoIs"]')) {
     document.querySelectorAll('[data-swiper="sliderWhoIs"]').forEach((swiperEl) => {
 
