@@ -495,8 +495,83 @@ block mainwrapper
                 class: "button--white request__button",
                 "data-modal-open": "bid"
             })
-
     section.section.section--no-overflow#examples
+      .container
+        .h2
+          h2 Наши кейсы
+        .cases-slider
+          .cases-slider__container
+            +swiper("swiper-cases-text", "pagination-id", "sliderCases", false)
+              .swiper-slide
+                .card-cases__content
+                      .cases-pagination
+                        img(src="img/image-content/samokat.png", alt="")
+                      .card-cases__stat
+                        .h3
+                          h3 2000
+                        .card-cases__text
+                          p Каждый из нас понимает очевидную вещь: консультация с широким активом.
+                      .card-cases__stat
+                        .h3
+                          h3 Более 38%
+                        .card-cases__text
+                          p Каждый из нас понимает очевидную вещь: консультация с широким активом.
+              .swiper-slide
+                .card-cases__content
+                      .cases-pagination
+                        img(src="img/image-content/grow-food.png", alt="")
+                      .card-cases__stat
+                        .h3
+                          h3 2000
+                        .card-cases__text
+                          p Каждый из нас понимает очевидную вещь: консультация с широким активом.
+                      .card-cases__stat
+                        .h3
+                          h3 Более 38%
+                        .card-cases__text
+                          p Каждый из нас понимает очевидную вещь: консультация с широким активом.
+              .swiper-slide
+                .card-cases__content
+                      .cases-pagination
+                        img(src="img/image-content/delivery-food.png", alt="")
+                      .card-cases__stat
+                        .h3
+                          h3 2000
+                        .card-cases__text
+                          p Каждый из нас понимает очевидную вещь: консультация с широким активом.
+                      .card-cases__stat
+                        .h3
+                          h3 Более 38%
+                        .card-cases__text
+                          p Каждый из нас понимает очевидную вещь: консультация с широким активом.
+            +swiper("swiper-cases-image", "pagination-id", "sliderCases", false)
+              .swiper-slide
+                    +swiper("swiper-image", "pagination-id", "sliderImage", true)
+                      .swiper-slide(style="background-image: url(img/image-content/slider-cases.jpg)")
+                        .card-cases__slider-title
+                          h3 Каждый из нас понимает: консультация с широким активом. Каждый из нас понимает очевидную вещь
+                      .swiper-slide(style="background-image: url(img/image-content/slider-cases.jpg)")
+                        .card-cases__slider-title
+                          h3 Каждый из нас понимает:
+              .swiper-slide
+                    +swiper("swiper-image", "pagination-id", "sliderImage", true)
+                      .swiper-slide(style="background-image: url(img/image-content/card-advantages-1.jpg)")
+                        .card-cases__slider-title
+                          h3 Каждый из нас понимает: консультация с широким активом. Каждый из нас понимает очевидную вещь
+                      .swiper-slide(style="background-image: url(img/image-content/card-advantages-1.jpg)")
+                        .card-cases__slider-title
+                          h3 Каждый из нас понимает:
+              .swiper-slide
+                    +swiper("swiper-image", "pagination-id", "sliderImage", true)
+                      .swiper-slide(style="background-image: url(img/image-content/card-advantages-4.jpg)")
+                        .card-cases__slider-title
+                          h3 Каждый из нас понимает: консультация с широким активом. Каждый из нас понимает очевидную вещь
+                      .swiper-slide(style="background-image: url(img/image-content/card-advantages-4.jpg)")
+                        .card-cases__slider-title
+                          h3 Каждый из нас понимает:
+          .cases-slider__pagination
+
+    //- section.section.section--no-overflow#examples
       .container
         .h2
           h2 Наши кейсы
