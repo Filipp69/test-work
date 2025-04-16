@@ -59,29 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
     paginationTextElements.forEach(el => el.style.minHeight = `${maxHeight}px`);
   }
 
-  // Анимация появления элементов при скролле
-  function handleScrollAnimations() {
-    const elements = document.querySelectorAll('.slide-in-left');
-    if (!elements.length) return;
-
-    function checkPosition() {
-      const windowHeight = window.innerHeight;
-      const triggerOffset = windowHeight * 0.75;
-      elements.forEach(el => {
-        if (el.classList.contains('animate')) return;
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= triggerOffset) el.classList.add('animate');
-      });
-    }
-
-    checkPosition();
-    let isScrolling;
-    window.addEventListener('scroll', function() {
-      window.clearTimeout(isScrolling);
-      isScrolling = setTimeout(checkPosition, 50);
-    }, { passive: true });
-  }
-
   // Реорганизация карточек технологий на мобильных устройствах
   function reorderTechnologyCards() {
     if (window.innerWidth <= 600) {
@@ -218,7 +195,6 @@ document.addEventListener('DOMContentLoaded', function() {
   setUniformPaginationTextHeight();
   window.addEventListener('load', setUniformPaginationTextHeight);
   window.addEventListener('resize', setUniformPaginationTextHeight);
-  handleScrollAnimations();
   initCounterAnimation();
   observeCounterBlock();
 });

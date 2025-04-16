@@ -1,6 +1,10 @@
 .banner {
   display: flex;
-  flex-direction: column;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
 
   .h1 {
     max-width: 710px;
