@@ -5,13 +5,15 @@
         | Микромаркет
         span.blue-text  Fridgy
         |  умное решение для&nbsp;торговли
-    ul.list-style.banner__list
-      li.active
+    ul.list-style.banner__list#myList
+      li.banner__list-item.active
         p Умный холодильник с самообслуживанием
-      li
+      li.banner__list-item
         p Подходит для офисов, коворкингов и бизнес-центров; производственных предприятий; общественных учреждений
-      li
+      li.banner__list-item
         p Современное решение, которое делает торговлю быстрой, удобной и прибыльной
     a.banner__link(href="#advantages") Узнать, как работает Fridgy?
   .banner__anim
-    img(src="img/image/untitled.png", alt="", srcset="")
+    <video id="myVideo" autoplay muted playsinline>
+      <source src="img/image/fridgy-anim.webm" type="video/webm">
+    </video>

@@ -1,9 +1,28 @@
 .banner {
   display: flex;
+  @include media(max, 767) {
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
 
   &__info {
     display: flex;
     flex-direction: column;
+  }
+
+  &__anim {
+    display: flex;
+    align-items: center;
+    width: 470px;
+
+    @include media(max, 767) {
+      width: 100%;
+    }
+
+    video {
+      position: relative;
+      width: 100%;
+    }
   }
 
   .h1 {

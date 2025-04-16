@@ -17,10 +17,13 @@
   }
 
   &__logo {
-    width: 220px;
     transition: opacity $transition;
-    @include media(max, 767) {
-      width: 150px;
+    img {
+      height: 50px;
+      width: auto;
+      @include media(max, 767) {
+        height: 35px;
+      }
     }
   }
 

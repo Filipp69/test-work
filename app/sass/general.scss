@@ -104,7 +104,7 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     @include media(max, 767) {
-      padding-top: 432px;
+      padding-top: 0;
       background-image: url(../img/image/banner-bg-mob.png);
       background-size: 100% auto;
       background-position: center top;
