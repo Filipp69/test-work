@@ -1,72 +1,66 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const video = document.getElementById('myVideo');
-        const items = document.querySelectorAll('.banner__list-item');
-        let autoSwitchInterval;
-        let currentActiveIndex = 0;
-        let videoDuration = 0;
-        let isManualSelection = false;
-        video.addEventListener('loadedmetadata', function() {
-          videoDuration = video.duration;
-          startAutoSwitch();
-        });
+  const items = document.querySelectorAll('.banner__list-item');
+  const videos = document.querySelectorAll('.banner__video');
+  const iosImage = document.querySelector('.banner__img-ios');
 
-        function getSegmentTime(index) {
-          const segmentDuration = videoDuration / 3;
-          return {
-            start: index * segmentDuration,
-            end: (index + 1) * segmentDuration
-          };
-        }
+  let currentActiveIndex = 0;
+  let autoSwitchInterval;
 
-        function playVideoSegment(index) {
-          const segment = getSegmentTime(index);
-          video.currentTime = segment.start;
-          video.play();
-          const segmentDuration = (segment.end - segment.start) * 1000;
-          setTimeout(() => {
-            if (video.currentTime >= segment.end - 0.1) {
-              video.pause();
-            }
-          }, segmentDuration);
-        }
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
-        function updateActiveItem(index) {
-          items.forEach((item, i) => {
-            if (i === index) {
-              item.classList.add('active');
-            } else {
-              item.classList.remove('active');
-            }
-          });
-          playVideoSegment(index);
-        }
+  if (isIOS) {
+    videos.forEach(video => video.style.display = 'none');
+    if (iosImage) iosImage.style.display = 'block';
+    return;
+  } else {
+    if (iosImage) iosImage.style.display = 'none';
+  }
 
-        function switchToNextItem() {
-          currentActiveIndex = (currentActiveIndex + 1) % items.length;
-          updateActiveItem(currentActiveIndex);
-        }
+  if (items.length !== videos.length) {
+    console.warn('Количество видео и пунктов списка должно совпадать');
+    return;
+  }
 
-        function startAutoSwitch() {
-          clearInterval(autoSwitchInterval);
-          updateActiveItem(currentActiveIndex);
-          autoSwitchInterval = setInterval(switchToNextItem, 3000);
-        }
+  function showVideo(index) {
+    videos.forEach((video, i) => {
+      if (i === index) {
+        video.style.display = 'block';
+        video.currentTime = 0;
+        video.play().catch(err => console.warn('play error:', err));
+      } else {
+        video.pause();
+        video.style.display = 'none';
+      }
+    });
 
-        function handleItemClick(index) {
-          currentActiveIndex = index;
-          updateActiveItem(currentActiveIndex);
-          clearInterval(autoSwitchInterval);
-          autoSwitchInterval = setInterval(switchToNextItem, 3000);
-        }
+    items.forEach((item, i) => {
+      item.classList.toggle('active', i === index);
+    });
+  }
 
-        items.forEach((item, index) => {
-          item.addEventListener('click', () => handleItemClick(index));
-        });
+  function switchToNextItem() {
+    currentActiveIndex = (currentActiveIndex + 1) % items.length;
+    showVideo(currentActiveIndex);
+  }
 
-        video.addEventListener('timeupdate', function() {
-          const segment = getSegmentTime(currentActiveIndex);
-          if (video.currentTime >= segment.end - 0.1) {
-            video.pause();
-          }
-        });
+  function startAutoSwitch() {
+    clearInterval(autoSwitchInterval);
+    showVideo(currentActiveIndex);
+    autoSwitchInterval = setInterval(switchToNextItem, 3000);
+  }
+
+  function handleItemClick(index) {
+    currentActiveIndex = index;
+    showVideo(index);
+    clearInterval(autoSwitchInterval);
+    autoSwitchInterval = setInterval(switchToNextItem, 3000);
+  }
+
+  items.forEach((item, index) => {
+    item.addEventListener('click', () => handleItemClick(index));
+  });
+
+  startAutoSwitch();
 });
+
+

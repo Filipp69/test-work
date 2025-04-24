@@ -89,6 +89,19 @@
       }
     }
   }
+  ol,
+  ul {
+    padding-left: 30px;
+    li {
+      list-style-type: disc;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 140%;
+      @include media(max, 767) {
+        font-size: 16px;
+      }
+    }
+  }
 }
 
 .opened {

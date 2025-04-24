@@ -20,7 +20,15 @@
     }
   }
 
-  p {
+  ol,
+  ul {
+    padding-left: 30px;
+    li {
+      list-style-type: disc;
+    }
+  }
+
+  p, li {
     font-size: 14px;
     font-weight: 400;
     line-height: 150%;
