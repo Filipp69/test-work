@@ -6,30 +6,37 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentActiveIndex = 0;
   let autoSwitchInterval;
 
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-
-  if (isIOS) {
-    videos.forEach(video => video.style.display = 'none');
-    if (iosImage) iosImage.style.display = 'block';
-    return;
-  } else {
-    if (iosImage) iosImage.style.display = 'none';
-  }
-
-  if (items.length !== videos.length) {
-    console.warn('Количество видео и пунктов списка должно совпадать');
-    return;
+  function waitForVideosLoaded() {
+    return Promise.all(Array.from(videos).map(video => {
+      return new Promise(resolve => {
+        if (video.readyState >= 3) {
+          video.pause();
+          video.currentTime = 0;
+          resolve();
+        } else {
+          video.addEventListener('canplaythrough', () => {
+            video.pause();
+            video.currentTime = 0;
+            resolve();
+          }, { once: true });
+        }
+      });
+    }));
   }
 
   function showVideo(index) {
     videos.forEach((video, i) => {
       if (i === index) {
-        video.style.display = 'block';
+        video.classList.add('active');
+        video.pause();
         video.currentTime = 0;
-        video.play().catch(err => console.warn('play error:', err));
+        video.playbackRate = 0.8;
+        requestAnimationFrame(() => {
+          video.play().catch(err => console.warn('play error:', err));
+        });
       } else {
         video.pause();
-        video.style.display = 'none';
+        video.classList.remove('active');
       }
     });
 
@@ -60,7 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
     item.addEventListener('click', () => handleItemClick(index));
   });
 
-  startAutoSwitch();
+  waitForVideosLoaded().then(() => {
+    console.log('Все видео загружены');
+    startAutoSwitch();
+  });
 });
-
-

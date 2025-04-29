@@ -1,6 +1,6 @@
 .banner {
   display: flex;
-  @include media(max, 767) {
+  @include media(max, 991) {
     flex-direction: column-reverse;
     gap: 20px;
   }
@@ -16,29 +16,57 @@
     width: 470px;
     overflow: hidden;
 
-    @include media(max, 767) {
+    @include media(max, 991) {
       width: 100%;
-      min-height: 380px;
-    }
-
-    video {
+      min-height: 560px;
       position: relative;
-      width: 100%;
     }
-    img {
-      position: relative;
-      width: 100%;
+    @include media(max, 540) {
+      margin: 0 -20px;
+      width: calc(100% + 40px);
+      min-height: 470px;
+    }
+    @include media(max, 540) {
+      min-height: 386px;
     }
   }
 
-  &__img-ios {
-    display: none;
+  &__video, &__img {
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+    right: -84px;
+    width: 630px;
+    opacity: 0;
+    z-index: -1;
+    @include media(max, 1170) {
+      top: 65%;
+      width: 40%;
+      right: 0;
+    }
+    @include media(max, 991) {
+      right: 50%;
+      top: 0;
+      transform: translateX(50%);
+      width: auto;
+      height: 100%;
+    }
+    @include media(max, 540) {
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      height: auto;
+    }
+    &.active {
+      opacity: 1;
+    }
   }
 
   .h1 {
     max-width: 710px;
     margin-bottom: 64px;
-    @include media(max, 767) {
+    @include media(max, 991) {
       margin-bottom: 36px;
     }
   }
@@ -49,7 +77,7 @@
 
   &__list {
     margin-bottom: 62px;
-    @include media(max, 767) {
+    @include media(max, 991) {
       margin-bottom: 20px;
     }
 

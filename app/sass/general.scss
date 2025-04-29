@@ -99,15 +99,15 @@ body {
     margin-top: $header-height;
     padding-top: 81px;
     padding-bottom: 69px;
-    background-image: url(../img/image/banner-bg.png);
-    background-size: auto 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    @include media(max, 767) {
+    // background-image: url(../img/image/banner-bg.png);
+    // background-size: auto 100%;
+    // background-repeat: no-repeat;
+    // background-position: center center;
+    @include media(max, 991) {
       padding-top: 0;
-      background-image: url(../img/image/banner-bg-mob.png);
-      background-size: 100% auto;
-      background-position: center top;
+      // background-image: url(../img/image/banner-bg-mob.png);
+      // background-size: 100% auto;
+      // background-position: center top;
     }
   }
 
