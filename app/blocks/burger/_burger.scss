@@ -1,4 +1,5 @@
 .burger {
+  display: none;
   z-index: 1;
   width: 50px;
   height: 50px;
@@ -7,16 +8,16 @@
   border-radius: 10px;
   border: 2px solid $color-primary;
   transition: $transition;
-  
+
+  @include media(max, 1440) {
+    display: block;
+  }
+
   @include hover {
     background-color: $color-primary;
     span {
       background-color: $color-white;
     }
-  }
-
-  @include media(max, 767) {
-    border: none;
   }
 
   span {
@@ -27,16 +28,9 @@
     border-radius: 2px;
     background-color: $color-primary;
     transition: transform $transition, opacity $transition, background-color $transition;
-    @include media(max, 767) {
-      left: 14px;
-      width: 32px;
-    }
 
     &:nth-child(1) {
       top: 17px;
-      @include media(max, 767) {
-        top: 14px;
-      }
     }
 
     &:nth-child(2) {
@@ -46,21 +40,11 @@
 
     &:nth-child(3) {
       bottom: 17px;
-      @include media(max, 767) {
-        bottom: 14px;
-      }
     }
   }
 
   &--open {
-    @include media(max, 767) {
-      transform: translate(9px, -5px);
-    }
     span {
-      @include media(max, 767) {
-        background-color: $color-black;
-        width: 23px;
-      }
       &:nth-child(1) {
         top: 50%;
         transform: translateY(-50%) rotate(45deg);

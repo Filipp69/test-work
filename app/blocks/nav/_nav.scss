@@ -1,128 +1,39 @@
 .nav {
-  position: absolute;
-  top: -100vh;
-  left: 0;
-  width: 100%;
-  min-height: 350px;
-  padding-top: 120px;
-  padding-bottom: 40px;
-  background-image: url(../img/image/menu-bg.jpg);
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  background-position: center center;
-  transition: top $transition-long;
-
-  @include media(max, 767) {
-    height: 100vh;
-    padding: 115px 0;
-    background-image: url(../img/image/menu-bg-mob.jpg);
-  }
-
-  &.vis {
-    top: 0;
-  }
-
-  &__container {
-    display: flex;
-    gap: 20px;
-    @include media(max, 991) {
-      flex-direction: column;
-    }
-    @include media(max, 767) {
-      gap: 54px;
-      height: calc(100vh - 230px);
-      overflow: auto;
-      padding-left: 30px;
-      margin-right: 10px;
-      width: calc(100% - 10px);
-      &::-webkit-scrollbar {
-        width: 5px;
-        border-radius: 10px;
-        background-color: transparent;
-      }
-      &::-webkit-scrollbar-thumb {
-        background-color: $color-primary;
-        border-radius: 10px;
-      }
-      &::-webkit-scrollbar-track {
-        border-radius: 10px;
-      }
-    }
-  }
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
 
   &__list {
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    gap: 10px 20px;
-    width: 100%;
-    height: 171px;
-    @include media(max, 767) {
-      flex-wrap: nowrap;
-      height: unset;
-      gap: 20px;
+    gap: 60px;
+    @include media(max, 1440) {
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
     }
   }
-
-  &__contacts {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    gap: 20px;
-    @include media(max, 767) {
-      width: 100%;
-    }
-  }
-
-  &__address {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 150%;
-    text-transform: uppercase;
-
-    a {
-      position: relative;
-      width: fit-content;
-
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: -5px;
-        height: 1px;
-        width: 0;
-        background: currentColor;
-        transition: width $transition-long;
-      }
-
-      @include hover {
-        &::after {
-          width: 100%;
-        }
-      }
-    }
-  }
-
   &__link {
-    font-size: 32px;
-    font-weight: 600;
-    line-height: 110%;
-    text-transform: uppercase;
+    font-size: 24px;
+    font-weight: 400;
+    font-family: $font-secondary;
+    transition: color $transition;
 
-    @include media(max, 767) {
-      font-size: 20px;
-      line-height: 150%;
+    &.active {
+      color: $color-primary;
+      pointer-events: none;
     }
 
     @include hover {
+      color: $color-grey-light;
+    }
+    &:active {
       color: $color-primary;
     }
-    &.active {
-      color: $color-primary;
+    &[aria-disabled="true"],
+    .disabled {
+      color: #3F3F3F;
+      pointer-events: none;
+      cursor: default;
     }
   }
 }

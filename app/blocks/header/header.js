@@ -15,18 +15,15 @@ document.addEventListener("DOMContentLoaded", function () {
 function toggleBurgerMenu(burgerButton) {
   const burgerMenu = document.querySelector("[data-header-menu]");
   const header = document.querySelector(".header");
-  const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
   burgerButton.classList.toggle("burger--open");
   burgerMenu.classList.toggle("vis");
   header.classList.toggle("menu-open");
 
-  if (isMobile) {
-      if (burgerButton.classList.contains("burger--open")) {
-          disableScrolling();
-      } else {
-          enableScrolling();
-      }
+  if (burgerButton.classList.contains("burger--open")) {
+      disableScrolling();
+  } else {
+      enableScrolling();
   }
 }
 
@@ -46,9 +43,7 @@ function setupNavLinks() {
               burgerMenu.classList.remove("vis");
               header.classList.remove("menu-open");
 
-              if (isMobile) {
-                  enableScrolling();
-              }
+              enableScrolling();
           }
       });
   });

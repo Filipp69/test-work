@@ -1,24 +1,29 @@
 .banner
-  .banner__info
-    .h1
-      h1
-        | Микромаркет
-        span.blue-text  Fridgy
-        |  умное решение для&nbsp;торговли
-    ul.list-style.banner__list#myList
-      li.banner__list-item.active
-        p Умный холодильник с самообслуживанием
-      li.banner__list-item
-        p Подходит для офисов, коворкингов и бизнес-центров; производственных предприятий; общественных учреждений
-      li.banner__list-item
-        p Современное решение, которое делает торговлю быстрой, удобной и прибыльной
-    a.banner__link(href="#advantages") Узнать, как работает Fridgy?
-  .banner__anim
-    img.banner__img.active(src="img/image/anim-img.png", alt="Холодильник")
-    video.banner__video(muted playsinline autoplay preload="auto")
-      source(src="img/image/anim-1.webm", type="video/webm")
-    video.banner__video(muted playsinline autoplay preload="auto")
-      source(src="img/image/anim-2.webm", type="video/webm")
-    video.banner__video(muted playsinline autoplay preload="auto")
-      source(src="img/image/anim-3.webm", type="video/webm")
-
+  .banner__wrapper
+    .banner__content
+      h1.h1
+        span.text-accent Лидогенерация
+        br
+        | для бизнеса
+      .banner__sub-title
+        p Покупайте только целевые лиды по&nbsp;фиксированной цене от&nbsp;300&nbsp;₽
+        img.banner__emoji(src="img/image-content/banner-emoji.png", alt="Эмодзи дененжное лицо")
+      +button({
+                link: true,
+                text: "Выбрать пакет лидов",
+                class: "button--primary"
+            })
+    .banner__img
+      img.banner__pic(src="img/image-content/banner-img.jpg", alt="Женщина с ноутбуком")
+      img.banner__star.banner__star--small(src="img/image/star.svg", alt="")
+      img.banner__star.banner__star--big(src="img/image/star.svg", alt="")
+  .banner__advantages.styled-scrollbar
+    ul.advantages-list
+      li.advantages-list__item Лидогенерация в b2b
+      li.advantages-list__item Биржа лидов
+      li.advantages-list__item Сервис по Лидгену
+      li.advantages-list__item Лиды для производства
+      li.advantages-list__item Клиенты
+        br
+        | для бизнеса
+      li.advantages-list__item Определить телефон посетителя сайта

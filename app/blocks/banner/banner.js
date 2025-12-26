@@ -1,74 +1,80 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const items = document.querySelectorAll('.banner__list-item');
-  const videos = document.querySelectorAll('.banner__video');
-  const iosImage = document.querySelector('.banner__img-ios');
+window.addEventListener('DOMContentLoaded', () => {
+  const wrappers = document.querySelectorAll('.banner__advantages');
 
-  let currentActiveIndex = 0;
-  let autoSwitchInterval;
+  wrappers.forEach(wrapper => {
+    const advantagesList = wrapper.querySelector('.advantages-list');
+    if (!advantagesList) return;
 
-  function waitForVideosLoaded() {
-    return Promise.all(Array.from(videos).map(video => {
-      return new Promise(resolve => {
-        if (video.readyState >= 3) {
-          video.pause();
-          video.currentTime = 0;
-          resolve();
-        } else {
-          video.addEventListener('canplaythrough', () => {
-            video.pause();
-            video.currentTime = 0;
-            resolve();
-          }, { once: true });
+    let scrolled = false;
+    let intervalId = null;
+
+    // есть ли горизонтальный скролл
+    function hasHorizontalScroll() {
+      return wrapper.scrollWidth > wrapper.clientWidth;
+    }
+
+    function startAnimationLoop() {
+      if (intervalId || !hasHorizontalScroll()) return;
+
+      intervalId = setInterval(() => {
+        if (!scrolled) {
+          advantagesList.classList.add('animate-scroll');
+
+          setTimeout(() => {
+            advantagesList.classList.remove('animate-scroll');
+          }, 2000);
         }
-      });
-    }));
-  }
+      }, 4000);
+    }
 
-  function showVideo(index) {
-    videos.forEach((video, i) => {
-      if (i === index) {
-        video.classList.add('active');
-        video.pause();
-        video.currentTime = 0;
-        video.playbackRate = 0.8;
-        requestAnimationFrame(() => {
-          video.play().catch(err => console.warn('play error:', err));
-        });
-      } else {
-        video.pause();
-        video.classList.remove('active');
+    function stopAnimationLoop() {
+      if (!intervalId) return;
+
+      clearInterval(intervalId);
+      intervalId = null;
+      advantagesList.classList.remove('animate-scroll');
+    }
+
+    // пользователь начал скроллить
+    wrapper.addEventListener('scroll', () => {
+      if (wrapper.scrollLeft > 2 && !scrolled) {
+        scrolled = true;
+        stopAnimationLoop();
       }
     });
 
-    items.forEach((item, i) => {
-      item.classList.toggle('active', i === index);
+    // при ресайзе проверяем, появился ли скролл
+    window.addEventListener('resize', () => {
+      if (hasHorizontalScroll()) {
+        startAnimationLoop();
+      } else {
+        stopAnimationLoop();
+      }
     });
-  }
 
-  function switchToNextItem() {
-    currentActiveIndex = (currentActiveIndex + 1) % items.length;
-    showVideo(currentActiveIndex);
-  }
-
-  function startAutoSwitch() {
-    clearInterval(autoSwitchInterval);
-    showVideo(currentActiveIndex);
-    autoSwitchInterval = setInterval(switchToNextItem, 3000);
-  }
-
-  function handleItemClick(index) {
-    currentActiveIndex = index;
-    showVideo(index);
-    clearInterval(autoSwitchInterval);
-    autoSwitchInterval = setInterval(switchToNextItem, 3000);
-  }
-
-  items.forEach((item, index) => {
-    item.addEventListener('click', () => handleItemClick(index));
+    // первичная проверка
+    if (hasHorizontalScroll()) {
+      startAnimationLoop();
+    }
   });
 
-  waitForVideosLoaded().then(() => {
-    console.log('Все видео загружены');
-    startAutoSwitch();
-  });
+  const stars = document.querySelectorAll('.banner__star');
+
+  // stars.forEach(star => {
+  //   function flicker() {
+  //     const intensity = Math.random();
+
+  //     star.style.opacity = 0.4 + intensity * 0.6;
+  //     star.style.transform = `
+  //       rotate(${getComputedStyle(star).getPropertyValue('--rotation')})
+  //       scale(${1 + intensity * 0.2})
+  //     `;
+
+  //     const nextDelay = 300 + Math.random() * 2000;
+  //     setTimeout(flicker, nextDelay);
+  //   }
+
+  //   setTimeout(flicker, Math.random() * 1000);
+  // });
+
 });

@@ -1,16 +1,15 @@
 // colors
-$color-black: #141414;
+$color-black: #2D2D2D;
 $color-white: #FFFFFF;
-$color-grey: #F5F5F5;
-$color-grey-dark: #888888;
-
-$color-primary: #455DFF;
-
-$color-error: #F04437;
+$color-grey: #808080;
+$color-grey-light: #C0C0C0;
+$color-grey-white: #F6F6F6;
+$color-primary: #FF6600;
 
 // font-family
 
-$font-primary: 'Onest', sans-serif;;
+$font-primary: 'Montserrat', sans-serif;
+$font-secondary: 'Inter', sans-serif;
 
 // transition
 
@@ -18,5 +17,4 @@ $transition: .3s ease;
 $transition-long: .7s ease;
 
 // sizes
-
-$header-height: 80px;
+$header-height: 82px;

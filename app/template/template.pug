@@ -1,16 +1,6 @@
-include ../blocks/components/checkbox/checkbox
-include ../blocks/components/radio/radio
-include ../blocks/components/accordion/accordion.pug
-include ../blocks/components/tabs/tabs.pug
 include ../blocks/button/button
 include ../blocks/social/social.pug
-include ../blocks/card-advantages/card-advantages.pug
-include ../blocks/card-technology/card-technology.pug
 include ../blocks/card-about/card-about.pug
-include ../blocks/card-how/card-how.pug
-include ../blocks/card-who-is/card-who-is.pug
-include ../blocks/card-calc/card-calc.pug
-include ../blocks/swiper/swiper.pug
 
 <!DOCTYPE html>
 html(lang="ru")
@@ -19,7 +9,7 @@ html(lang="ru")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", href="css/libs.css")
     link(rel="stylesheet", href="css/style.css")
-    title Микромаркет Fridgy
+    title Leadconveer
     link(rel="apple-touch-icon" sizes="180x180" href="./favicon/apple-touch-icon.png")
     link(rel="icon" type="image/png" sizes="32x32" href="./favicon/favicon-32x32.png")
     link(rel="icon" type="image/png" sizes="16x16" href="./favicon/favicon-16x16.png")
@@ -37,8 +27,6 @@ html(lang="ru")
       block mainwrapper
 
     include ../blocks/footer/footer
-    include ../blocks/cookie/cookie
-    include ../blocks/modal/modal
     div(style="display:none;")
       include ../icons/icons.svg
     script(src="js/libs.js")

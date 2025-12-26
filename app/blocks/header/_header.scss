@@ -4,42 +4,98 @@
   left: 0;
   width: 100%;
   z-index: 100;
-  background-color: $color-white;
-  transition: background-color $transition-long;
+  background-color: $color-black;
+  color: $color-white;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  transition: border-radius $transition;
+  @include media(max, 767) {
+    border-radius: 0;
+  }
 
-  &.menu-open {
-    .header__logo {
-      @include media(max, 767) {
-        opacity: 0;
-        pointer-events: none;
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    height: $header-height;
+  }
+
+  &__menu {
+    width: 100%;
+    @include media(max, 1440) {
+      position: fixed;
+      top: $header-height;
+      left: 0;
+      width: 100%;
+      overflow: auto;
+      height: -webkit-fill-available;
+      padding-top: 60px;
+      background-color: $color-black;
+      transform: translateY(-100%);
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        transform $transition,
+        opacity $transition,
+        visibility $transition;
+
+      &.vis {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
       }
+    }
+  }
+
+  &__menu-wrapper {
+    display: flex;
+    gap: 30px;
+    width: 100%;
+    margin: 0 auto;
+    @include media(max, 1440) {
+      flex-direction: column;
+      align-items: center;
+      padding-bottom: 60px;
     }
   }
 
   &__logo {
-    transition: opacity $transition;
-    img {
-      height: 50px;
-      width: auto;
-      @include media(max, 767) {
-        height: 35px;
-      }
-    }
-  }
-
-  &:has(.burger--open) {
-    background-color: transparent;
-  }
-
-  &__row {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: $header-height;
+    flex-shrink: 0;
   }
 
   &__right {
     display: flex;
-    gap: 20px;
+    gap: 12px;
+    @include media(max, 1440) {
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+    }
+  }
+
+  &__phone {
+    font-family: $font-secondary;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 120%;
+    transition: color $transition;
+    @include hover {
+      color: $color-grey-light;
+    }
+    &:active {
+      color: $color-primary;
+    }
+    &[aria-disabled="true"],
+    .disabled {
+      color: #3F3F3F;
+      pointer-events: none;
+      cursor: default;
+    }
+  }
+
+  &.menu-open {
+    border-radius: 0;
   }
 }

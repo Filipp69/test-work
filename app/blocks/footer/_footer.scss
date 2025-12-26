@@ -1,110 +1,40 @@
 .footer {
   color: $color-white;
 
-  &__address {
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 150%;
-    text-transform: uppercase;
-
-    @include media(max, 767) {
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    a {
-      position: relative;
-      width: fit-content;
-
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: -5px;
-        height: 1px;
-        width: 0;
-        background: currentColor;
-        transition: width $transition-long;
-      }
-
-      @include hover {
-        &::after {
-          width: 100%;
-        }
-      }
-    }
-  }
-
-  &__contact-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  &__contacts,
-  &__info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
-    @include media(max, 991) {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 40px;
-    }
-  }
-
-  &__info {
-    @include media(max, 767) {
-      gap: 20px;
-    }
-    p {
-      font-size: 14px;
-      font-weight: 400;
-      line-height: 150%;
-    }
-  }
-
   &__copyright {
-    display: flex;
-    gap: 20px;
+    font-family: $font-secondary;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 120%;
     @include media(max, 767) {
-      flex-direction: column;
-      gap: 5px;
+      font-size: 20px;
     }
   }
 
-  &__details {
-    display: flex;
-    gap: 5px;
-    @include media(max, 767) {
-      flex-wrap: wrap;
-    }
+  &__requisites {
+    margin-bottom: 20px;
   }
+}
 
-  .social__item {
-    background-color: $color-white;
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px 0;
+  &__item {
+    padding: 0 10px;
+  }
+  &__item:not(:last-child) {
 
-    svg {
-      color: $color-primary;
-    }
-
+    border-right: 1px solid $color-grey;
+  }
+  &__link {
+    color: $color-grey;
     @include hover {
-      background-color: $color-primary;
-      svg {
-        color: $color-white;
-      }
+      color: $color-white;
     }
-  }
-  &__contacts {
-    .button {
-      @include media(max, 767) {
-        font-size: 20px;
-      }
+    &:active {
+      color: $color-primary;
     }
   }
 }

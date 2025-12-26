@@ -1,28 +1,11 @@
 .social {
   display: flex;
-  gap: 30px;
+  gap: 12px;
   align-items: center;
-  &__item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    background-color: $color-black;
-    transition: background-color $transition;
-
-    svg {
-      color: $color-white;
-      transition: color $transition;
-    }
-
-    @include hover {
-      background-color: $color-primary;
-    }
-  }
   &__icon {
-    transition: $transition;
-    fill: $color-black;
+    transition: opacity $transition;
+    @include hover {
+      opacity: .5;
+    }
   }
 }

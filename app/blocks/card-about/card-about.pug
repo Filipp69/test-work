@@ -1,12 +1,18 @@
 mixin CardAbout(data)
-  .card-about
-    .card-about__image
-        if data.image
-          img.card-about__image-pic(src=data.image alt=data.alt)
+  article.card-about
     .card-about__content
       if data.title
-        .card-about__title.h3
-          h3= data.title
+        .card-about__header
+          h3.card-about__title.h3= data.title
+          img.card-about__star(src="img/image/star.svg", alt="", loading="lazy")
+
       if data.text
-        .card-about__text
-          p= data.text
+        p.card-about__text= data.text
+
+    if data.image
+      .card-about__media
+        img.card-about__image(
+          src=data.image
+          alt=data.alt
+          loading="lazy"
+        )

@@ -1,0 +1,6 @@
+.logo {
+  width: 251px;
+  @include media(max, 540) {
+    width: 200px;
+  }
+}

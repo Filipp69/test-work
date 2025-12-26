@@ -1,39 +1,16 @@
 footer.footer(data-lock-scroll)
-  section.section.section--footer#contacts
+  section.section.section--footer
     .container
-      .h2
-        h2 контактная информация
-      .footer__contacts
-        .footer__address
-          .footer__address
-            .footer__contact-item
-              a(href="mailto:Email@email.ru") Email@email.ru
-              button.button.button--copy(type="button" data-copy="Email@email.ru" title="Копировать email")
-                svg(width="24" height="24")
-                  use(href="#icon-copy")
-                span.copyNotice E-mail скопирован в буфер обмена
-            .footer__contact-item
-              a(href="tel:+88000000000") 8 800 000-00-00
-              button.button.button--copy(type="button" data-copy="8 800 000-00-00" title="Копировать номер")
-                svg(width="24" height="24")
-                  use(href="#icon-copy")
-                span.copyNotice Телефон скопирован в буфер обмена
-        .footer__social
-          +social
-        +button({
-                button: true,
-                text: "Оставить обращение",
-                class: "button--white",
-                "data-modal-open": "callback"
-            })
-  section.section.section--second-footer
-    .container
-      .footer__info
-        .footer__copyright
-          p ООО «Смартикс»
-          p 2025© Все права защищены
-        .footer__details
-          p ИНН: XXXXXXXXXX
-          p КПП: XXXXXXXXXXXXXXXX
-          p БИК: XXXXXXXXXXXXXXXX
-
+      p.footer__copyright &copy;&nbsp;2025 Все права защищены. Технология &laquo;Лид Конвейер&raquo;&nbsp;&mdash; лидогенерация для бизнеса.
+      p.footer__requisites ООО «ДС-ГРУПП» ИНН 7801355174 ОГРН 1187847129425
+      ul.footer-nav
+        li.footer-nav__item
+          a.footer-nav__link(href="#") Блог
+        li.footer-nav__item
+          a.footer-nav__link(href="#") Договор-оферта
+        li.footer-nav__item
+          a.footer-nav__link(href="#") Политика конфиденциальности
+        li.footer-nav__item
+          a.footer-nav__link(href="#") Соглашение об обработке данных
+        li.footer-nav__item
+          a.footer-nav__link(href="#") Вход в личный кабинет

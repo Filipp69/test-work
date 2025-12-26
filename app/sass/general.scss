@@ -65,6 +65,19 @@ body {
   flex-direction: column;
   margin: 0;
   position: relative;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $color-primary;
+  }
 }
 .main,
 .page {
@@ -77,118 +90,73 @@ body {
   margin: 0 auto;
   width: 100%;
   padding: 0 20px;
-  max-width: 1220px;
+  max-width: 1820px;
+  @include media(max, 767) {
+    padding: 0 14px;
+  }
 }
 .section {
-  padding: 100px 0;
-
-  @include media(max, 767) {
-    padding: 60px 0;
-  }
-
   .container {
     display: flex;
     flex-direction: column;
-    gap: 60px;
+  }
+
+  &--main {
+    padding-top: $header-height;
+
+    .container {
+      padding-top: 60px;
+      @include media(max, 767) {
+        padding-top: 30px;
+      }
+    }
+  }
+
+  &--about {
+    padding: 120px 0;
     @include media(max, 767) {
+      padding: 60px 0;
+    }
+    .container {
       gap: 40px;
     }
   }
 
-  &--main {
-    margin-top: $header-height;
-    padding-top: 81px;
-    padding-bottom: 69px;
-    // background-image: url(../img/image/banner-bg.png);
-    // background-size: auto 100%;
-    // background-repeat: no-repeat;
-    // background-position: center center;
-    @include media(max, 991) {
-      padding-top: 0;
-      // background-image: url(../img/image/banner-bg-mob.png);
-      // background-size: 100% auto;
-      // background-position: center top;
-    }
-  }
-
   &--footer {
-    background-image: url(../img/image/footer-bg.jpg);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    @include media(max, 767) {
-      background-image: url(../img/image/footer-bg-mob.jpg);
-      background-size: 100% 100%;
-      background-position: center top;
-      padding: 40px 0;
-    }
-  }
-
-  &--request {
-    background-image: url(../img/image/footer-bg.jpg);
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    @include media(max, 767) {
-      background-image: url(../img/image/footer-bg-mob.jpg);
-      background-size: 100% 100%;
-      background-position: center top;
-    }
-  }
-
-  &--second-footer {
+    padding: 80px 0;
     background-color: $color-black;
-    padding: 20px 0;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    text-align: center;
+    @include media(max, 767) {
+      padding: 40px 0;
+      border-radius: 0;
+    }
+    .container {
+      gap: 20px;
+    }
   }
 
   &--grey {
-    background-color: $color-grey;
-  }
-
-  &--no-overflow {
-    overflow: hidden;
+    background-color: $color-grey-white;
   }
 }
 
-.no-mob {
-  @include media(max, 767) {
-    display: none !important;
-  }
+.text-accent {
+  color: $color-primary;
 }
 
-.custom-scroll {
+.styled-scrollbar {
   &::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+    width: 6px;
+    height: 6px;
   }
 
   &::-webkit-scrollbar-track {
-    background: $color-grey;
-    border-radius: 8px;
+    background: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
     background: $color-primary;
-    border-radius: 8px;
   }
-}
-
-@keyframes slide-in-left {
-  0% {
-    transform: translateX(-1000px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-.slide-in-left {
-  opacity: 0;
-  animation-fill-mode: both;
-}
-
-.slide-in-left.animate {
-  animation: slide-in-left 0.7s ease-out forwards;
 }
